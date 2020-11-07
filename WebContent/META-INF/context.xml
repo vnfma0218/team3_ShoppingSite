@@ -22,15 +22,4 @@
 	      auth="Container" 
 	      name="jdbc/oracle" />
 
-<Resource maxWait="-1" 
-          maxIdle="20" 
-          maxActive="10" 
-          password="1004"
-	      username="bituser" 
-	      url="jdbc:mysql://localhost:3306/mydb"
-		  driverClassName="com.mysql.jdbc.Driver" 
-		  type="javax.sql.DataSource"
-	      auth="Container" 
-	      name="jdbc/mysql" />
-
 </Context>
