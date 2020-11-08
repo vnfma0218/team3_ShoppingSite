@@ -14,6 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import kr.or.bit.utils.MyUtils;
@@ -48,7 +49,7 @@ public class setUtfFilter implements Filter {
     	// parse json in body
     	if(method.equals("POST") && request.getContentType().equals("application/json")) {
 			String body = getBody(httpReq);
-			JsonObject jsonBody = MyUtils.parseStringToJson(body);
+			JsonElement jsonBody = MyUtils.parseStringToJson(body);
 			request.setAttribute("jsonBody", jsonBody);
     	}
     	

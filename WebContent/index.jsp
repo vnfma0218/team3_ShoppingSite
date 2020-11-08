@@ -13,10 +13,12 @@ index
 <script>
 document.getElementById('sendAjax').addEventListener('click', async e => {
 	console.log('click')
-	const jsonData = { id: 'jack' }
+//	const jsonData = { id: 'jack', pwd: '1234' }
+//	const jsonData = { products: [{id: 'jack'}, {id: 'jack2'}] }
+	const jsonData = [{id: 'jack'}, {id: 'jack2'}]
 	const data = JSON.stringify(jsonData);
 //	const data = 'id=jack';
-	const res = await fetch('test.ajax', {
+	const res = await fetch('cart.do', {
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'
