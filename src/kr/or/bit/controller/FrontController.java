@@ -46,7 +46,6 @@ public class FrontController extends HttpServlet {
 		String urlCommand = (String)request.getAttribute("urlCommand");
 		
 		Action action = this.actionList.get(urlCommand);
-		System.out.println("action: " + action);
 		if(action != null) {
 			ActionForward forward = action.execute(request, response);
 			

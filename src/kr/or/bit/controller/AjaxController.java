@@ -1,6 +1,9 @@
 package kr.or.bit.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.ajax")
+import kr.or.bit.action.ActionAjax;
+import kr.or.bit.action.ActionAjaxData;
+import kr.or.bit.service_ajax.IdCheckAjaxService;
+
+
+@WebServlet(
+		name = "AjaxController",
+		urlPatterns = "*.ajax",
+		loadOnStartup = 1
+		)
 public class AjaxController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private HashMap<String, ActionAjax> actionList = null;
        
     public AjaxController() {
         super();
@@ -18,21 +32,38 @@ public class AjaxController extends HttpServlet {
     }
 
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		System.out.print("*.ajax Servlet ->");
+		actionList = new HashMap<String, ActionAjax>();
+		
+		actionList.put("/idCheck.ajax", new IdCheckAjaxService());
+		
+		System.out.println(" initialized");
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String urlCommand = (String)request.getAttribute("urlCommand");
+		
+		PrintWriter out = response.getWriter();
+		ActionAjax actionAjax = actionList.get(urlCommand);
+		if(actionAjax != null) {
+			ActionAjaxData ajaxData = actionAjax.execute(request, response);
+			response.setContentType(ajaxData.getContentType());
+			out.print(ajaxData.getData());
+		} else {
+			// wrong request
+		}
+		
+		out.close();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//	}
+//
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		doGet(request, response);
+//	}
 
 }

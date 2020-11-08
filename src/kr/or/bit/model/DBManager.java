@@ -21,7 +21,7 @@ public class DBManager {
 		} catch(NamingException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("DBManager getInstance");
 		return instance;
 	}
 	
@@ -47,47 +47,47 @@ public class DBManager {
 	/*
 	Connection Pool에 free 및 객체 소멸 함수들
 	*/
-	public void freeConnection(Connection con, PreparedStatement pstmt, ResultSet rs) {
+	public void freeConnection(Connection conn, PreparedStatement pstmt, ResultSet rs) {
 		try {
 			if (rs != null) rs.close();
 			if (pstmt != null) pstmt.close();
-			freeConnection(con);
+			freeConnection(conn);
 		} catch (SQLException e) {
 		    e.printStackTrace();
 		}
 	}
 
-	public void freeConnection(Connection con, Statement stmt, ResultSet rs) {
+	public void freeConnection(Connection conn, Statement stmt, ResultSet rs) {
 	    try {
 	        if (rs != null) rs.close();
 	        if (stmt != null) stmt.close();
-	        freeConnection(con);
+	        freeConnection(conn);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 	}
 
-	public void freeConnection(Connection con, PreparedStatement pstmt) {
+	public void freeConnection(Connection conn, PreparedStatement pstmt) {
 	    try {
 	        if (pstmt != null) pstmt.close();
-	        freeConnection(con);
+	        freeConnection(conn);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 	}
 
-	public void freeConnection(Connection con, Statement stmt) {
+	public void freeConnection(Connection conn, Statement stmt) {
 	    try {
 	        if (stmt != null) stmt.close();
-	        freeConnection(con);
+	        freeConnection(conn);
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 	}
 
-	public void freeConnection(Connection con) {
+	public void freeConnection(Connection conn) {
 	    try {
-	        if (con != null) con.close();
+	        if (conn != null) conn.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
