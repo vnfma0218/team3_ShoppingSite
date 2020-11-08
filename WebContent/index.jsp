@@ -26,6 +26,7 @@ document.getElementById('sendAjax').addEventListener('click', async e => {
 	    referrerPolicy: 'no-referrer',
 	    body: data
 	  });
+	console.log(res.status)
 });
 </script>
 </html>

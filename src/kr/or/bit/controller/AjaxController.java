@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.service_ajax.IdCheckAjaxService;
+import kr.or.bit.service_ajax.SignInAjaxService;
 
 
 @WebServlet(
@@ -36,6 +37,7 @@ public class AjaxController extends HttpServlet {
 		actionList = new HashMap<String, ActionAjax>();
 		
 		actionList.put("/idCheck.ajax", new IdCheckAjaxService());
+		actionList.put("/signIn.ajax", new SignInAjaxService());
 		
 		System.out.println(" initialized");
 	}
@@ -51,6 +53,7 @@ public class AjaxController extends HttpServlet {
 			out.print(ajaxData.getData());
 		} else {
 			// wrong request
+			response.setStatus(404);
 		}
 		
 		out.close();
