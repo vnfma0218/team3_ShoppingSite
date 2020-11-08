@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
+import kr.or.bit.service.CategoryPageService;
 import kr.or.bit.service.MainPageService;
 import kr.or.bit.service.SignInPageService;
 import kr.or.bit.service.SignOutService;
@@ -44,6 +45,7 @@ public class FrontController extends HttpServlet {
 		actionList.put("/signUp.do", new SignUpService());
 		actionList.put("/signInPage.do", new SignInPageService());
 		actionList.put("/signOut.do", new SignOutService());
+		actionList.put("/category.do", new CategoryPageService());
 		
 		System.out.println(" initialized");
 	}

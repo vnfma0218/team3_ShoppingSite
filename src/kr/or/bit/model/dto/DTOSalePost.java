@@ -1,6 +1,8 @@
 package kr.or.bit.model.dto;
 
+//import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DTOSalePost {
 	private int saleNum;
@@ -9,11 +11,20 @@ public class DTOSalePost {
 	private String saleTitle;
 	private String saleContent;
 	private Date saleCreatedAt;
-	private String[] imageAddrs;
+	private List<String> imageAddrs;
 	
 	public DTOSalePost() {}
 	
-	public DTOSalePost(int saleNum, int selNum, int categoryNum, String saleTitle, String saleContent, Date saleCreatedAt, String[] imageAddrs) {
+	public DTOSalePost(int saleNum, int selNum, int categoryNum, String saleTitle, String saleContent, Date saleCreatedAt) {
+		this.saleNum = saleNum;
+		this.selNum = selNum;
+		this.categoryNum = categoryNum;
+		this.saleTitle = saleTitle;
+		this.saleContent = saleContent;
+		this.saleCreatedAt = saleCreatedAt;
+	}
+	
+	public DTOSalePost(int saleNum, int selNum, int categoryNum, String saleTitle, String saleContent, Date saleCreatedAt, List<String> imageAddrs) {
 		this.saleNum = saleNum;
 		this.selNum = selNum;
 		this.categoryNum = categoryNum;
@@ -71,11 +82,11 @@ public class DTOSalePost {
 		this.saleCreatedAt = saleCreatedAt;
 	}
 
-	public String[] getImageAddrs() {
+	public List<String> getImageAddrs() {
 		return imageAddrs;
 	}
 
-	public void setImageAddrs(String[] imageAddrs) {
+	public void setImageAddrs(List<String> imageAddrs) {
 		this.imageAddrs = imageAddrs;
 	}
 	
