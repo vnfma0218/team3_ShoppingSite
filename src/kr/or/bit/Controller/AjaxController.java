@@ -18,11 +18,11 @@ import kr.or.bit.Service.SignUp;
 /**
  * Servlet implementation class FrontContorller
  */
-@WebServlet("*.do")
-public class FrontContorller extends HttpServlet {
+@WebServlet("*.ajax")
+public class AjaxController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public FrontContorller() {
+	public AjaxController() {
 		super();
 	}
 
@@ -34,28 +34,18 @@ public class FrontContorller extends HttpServlet {
 		ActionForward forward = new ActionForward();
 		Action action = null;
 		
-		//회원가입페이지
-		if (cmdURI.equals("/signUpPage.do")) {
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/SignUpPage.jsp");
-		}
-
-		//회원가입요청
-		else if (cmdURI.equals("/signUp.do")) {
-			action = new SignUp();		
+	
+	
+		//아이디중복체크
+		if(cmdURI.equals("/idCheck.ajax")) {  
+			action = new IdCheck();
 			forward = action.execute(request, response);
-		
 		}
-		//로그아웃
-		else if(cmdURI.equals("/signOut.do")) {  
-			action = new SignOut();
+		//비밀번호 인증
+		else if(cmdURI.equals("/confirmPwd.ajax")) {  
+			action = new pwdCheck();
 			forward = action.execute(request, response);
-		}	
-		//아이디중복체크 >>ajax로 이동
-//		else if(cmdURI.equals("/idcheck.do")) {  
-//			action = new IdCheck();
-//			forward = action.execute(request, response);
-//		}
+		}
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);

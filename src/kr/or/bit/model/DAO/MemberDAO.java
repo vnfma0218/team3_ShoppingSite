@@ -59,22 +59,22 @@ public class MemberDAO {
 	}
 
 	// 아이디체크
-	public String IdCheck(String id) throws Exception {
+	public String idCheck(String id) throws Exception {
 		String check = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		String sql = "select id from MEMBER where id=?";
 		try {
-			conn = ds.getConnection();
-			String sql = "select id from MEMBER where id=?";
+			conn = ds.getConnection();			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-
+			pstmt.setString(1, id);			
 			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
-				check = "false"; // 아이디가 중복될때
+				check = "fail"; // 아이디가 중복될때
 			} else {
-				check = "true"; // 아이디가 없을때
+				check = "success"; // 아이디가 없을때
 			}
 			if (id.equals("")) {
 				check = "empty"; // id가 빈값일때
@@ -84,6 +84,40 @@ public class MemberDAO {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+			conn.close();
+		}
+		return check;
+	}
+	//비밀번호 확인
+	public String pwdCheck(String pwd) throws Exception {
+		String check = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select pwd from MEMBER where id=?";
+		String pw;
+		try {
+			conn = ds.getConnection();		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				pw=ds.getString("pwd");
+				
+				if(pw.equals(pwd)) {
+					check = "success";//  success
+				}else {
+					check = "fail";	//pwd x
+				}
+			}else {
+				check = "fail2";//회원이 x
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
 			conn.close();
