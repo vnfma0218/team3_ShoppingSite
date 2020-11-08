@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.MainPageService;
+import kr.or.bit.service.SignUpPageService;
 
 @WebServlet(
 		name = "FrontController",
@@ -35,7 +36,8 @@ public class FrontController extends HttpServlet {
 		System.out.print("*.do Servlet ->");
 		actionList = new HashMap<String, Action>();
 		
-		actionList.put("/Main.do", new MainPageService());
+		actionList.put("/mainPage.do", new MainPageService());
+		actionList.put("/signUpPage.do", new SignUpPageService());
 		
 		System.out.println(" initialized");
 	}
