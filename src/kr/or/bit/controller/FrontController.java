@@ -16,6 +16,7 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.MainPageService;
 import kr.or.bit.service.SignUpPageService;
+import kr.or.bit.service.SignUpService;
 
 @WebServlet(
 		name = "FrontController",
@@ -38,6 +39,7 @@ public class FrontController extends HttpServlet {
 		
 		actionList.put("/mainPage.do", new MainPageService());
 		actionList.put("/signUpPage.do", new SignUpPageService());
+		actionList.put("/signUp.do", new SignUpService());
 		
 		System.out.println(" initialized");
 	}
