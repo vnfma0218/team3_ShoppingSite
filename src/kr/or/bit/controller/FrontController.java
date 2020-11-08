@@ -16,6 +16,7 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.CategoryPageService;
 import kr.or.bit.service.MainPageService;
+import kr.or.bit.service.SalePageService;
 import kr.or.bit.service.SignInPageService;
 import kr.or.bit.service.SignOutService;
 import kr.or.bit.service.SignUpPageService;
@@ -46,6 +47,7 @@ public class FrontController extends HttpServlet {
 		actionList.put("/signInPage.do", new SignInPageService());
 		actionList.put("/signOut.do", new SignOutService());
 		actionList.put("/category.do", new CategoryPageService());
+		actionList.put("/salePage.do", new SalePageService());
 		
 		System.out.println(" initialized");
 	}
