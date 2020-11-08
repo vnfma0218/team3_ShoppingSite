@@ -16,7 +16,11 @@ import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.MainPageService;
 
-@WebServlet("*.do")
+@WebServlet(
+		name = "FrontController",
+		urlPatterns = "*.do",
+		loadOnStartup = 1
+		)
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
