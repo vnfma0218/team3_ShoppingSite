@@ -17,6 +17,7 @@ import kr.or.bit.action.ActionForward;
 import kr.or.bit.service.CartPageService;
 import kr.or.bit.service.CategoryPageService;
 import kr.or.bit.service.MainPageService;
+import kr.or.bit.service.PurchasePageService;
 import kr.or.bit.service.SalePageService;
 import kr.or.bit.service.SignInPageService;
 import kr.or.bit.service.SignOutService;
@@ -50,6 +51,7 @@ public class FrontController extends HttpServlet {
 		actionList.put("/category.do", new CategoryPageService());
 		actionList.put("/salePage.do", new SalePageService());
 		actionList.put("/cart.do", new CartPageService());
+		actionList.put("/purchasePage.do", new PurchasePageService());
 		
 		System.out.println(" initialized");
 	}
