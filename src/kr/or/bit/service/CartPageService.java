@@ -18,17 +18,8 @@ public class CartPageService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("CartPageService");
-		JsonObject body = (JsonObject)request.getAttribute("jsonBody");
-		JsonArray products =  body.get("products").getAsJsonArray();
-		
-		Iterator<JsonElement> iter = products.iterator();
-		while(iter.hasNext()) {
-//			int productNum = iter.next().getAsInt();
-			JsonObject aa = iter.next().getAsJsonObject();
-			System.out.println(aa.get("id").getAsString());
-		}
-		
+		JsonArray products = (JsonArray)request.getAttribute("jsonBody");
+		request.setAttribute("products", products);
 		
 		forward.setRedirect(false);
 		forward.setPath("Cart.jsp");

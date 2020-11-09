@@ -5,13 +5,13 @@ public class DTOProduct {
 	private int selNum;
 	private String pName;
 	private int pPrice;
-	private char pSize;
+	private String pSize;
 	private int pAmount;
 	private String pDescription;
 	
 	public DTOProduct() {}
 	
-	public DTOProduct(int pNum, int selNum, String pName, int pPrice, char pSize, int pAmount, String pDescription) {
+	public DTOProduct(int pNum, int selNum, String pName, int pPrice, String pSize, int pAmount, String pDescription) {
 		this.pNum = pNum;
 		this.selNum = selNum;
 		this.pName = pName;
@@ -53,11 +53,11 @@ public class DTOProduct {
 		this.pPrice = pPrice;
 	}
 
-	public char getpSize() {
+	public String getpSize() {
 		return pSize;
 	}
 
-	public void setpSize(char pSize) {
+	public void setpSize(String pSize) {
 		this.pSize = pSize;
 	}
 
