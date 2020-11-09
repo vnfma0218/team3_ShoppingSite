@@ -17,12 +17,6 @@ public class ProductAdd implements Action{
       ProductDAO productDao = new ProductDAO();
       ProductDTO productDto = new ProductDTO();
       
-//      {pName:string,
-//         pPrice:num,
-//         pSize:string,
-//         pAmount:num,
-//         pDesc:string
-//      }   
       
       try {
          productDto.setP_num(request.getParameter("pnum")); //상품번호
@@ -37,7 +31,7 @@ public class ProductAdd implements Action{
       } finally {        
             productDao.productAdd(productDto); //입력받은 값을 DTO에 저장 -> DAO 넘겨주기 -> DB에 저장
             forward.setRedirect(false);
-            forward.setPath("views/productAddPage.jsp"); //상품등록페이지 경로이동
+            forward.setPath("productList.do"); //상품목록페이지 경로이동
       }
       return forward;
    }

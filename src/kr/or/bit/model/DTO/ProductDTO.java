@@ -55,8 +55,9 @@ public String toString() {
 	return "ProductDTO [p_num=" + p_num + ", sel_num=" + sel_num + ", p_name=" + p_name + ", p_price=" + p_price
 			+ ", p_size=" + p_size + ", p_amount=" + p_amount + ", p_description=" + p_description + "]";
 }
+
    
    
-  
    
+
 }

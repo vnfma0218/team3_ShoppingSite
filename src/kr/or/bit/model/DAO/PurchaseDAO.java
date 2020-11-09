@@ -1,6 +1,7 @@
 package kr.or.bit.model.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,16 +13,17 @@ import javax.sql.DataSource;
 
 import kr.or.bit.model.DTO.MemberDTO;
 import kr.or.bit.model.DTO.ProductDTO;
+import kr.or.bit.model.DTO.PurchaseDTO;
 import kr.or.bit.utils.DB_Close;
 
-public class ProductDAO {
+public class PurchaseDAO {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DataSource ds = null;
 	Connection conn = null;
 
-	public ProductDAO() {
+	public PurchaseDAO() {
 		try {
 			Context context = new InitialContext();
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
@@ -30,27 +32,24 @@ public class ProductDAO {
 		}
 	}
 
-	// 상품등록
-	public int productAdd(ProductDTO product) throws Exception {
-		String sql = "INSERT INTO  PRODUCT (p_num, sel_num, p_name, p_price, p_size, p_amount, p_description) " + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+	// 상품주문
+	public int purchase(PurchaseDTO purchase) throws Exception {
+		String sql = "INSERT INTO  PURCHASE (o_num, id, p_num, o_amount, o_created_at) " + "VALUES (?, ?, ?, ?, ?)";
 
 		int result = 0;
-
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product.getP_num());
-			pstmt.setString(2, product.getSel_num());
-			pstmt.setString(3, product.getP_name());
-			pstmt.setString(4, product.getP_price());
-			pstmt.setString(5, product.getP_size());
-			pstmt.setString(6, product.getP_amount());
-			pstmt.setString(7, product.getP_description());
+			pstmt.setString(1, purchase.getoNum());
+			pstmt.setString(2, purchase.getId());
+			pstmt.setString(3, purchase.getpNum());
+			pstmt.setString(4, purchase.getoAmount());
+			pstmt.setString(5,purchase.getoCreatedAt());
 
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			System.out.println("상품등록실패: " + e.getMessage());
+			System.out.println("주문실패: " + e.getMessage());
 		} finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
