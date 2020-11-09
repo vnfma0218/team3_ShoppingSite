@@ -53,7 +53,9 @@ public class PurchaseAjaxService implements ActionAjax {
 			if(!ajaxData.getData().equals("fail")) { // 구매가능
 				iter = orders.iterator();
 				while(iter.hasNext()) {
-					
+					JsonObject order = iter.next().getAsJsonObject();
+					int pNum = order.get("pNum").getAsInt();
+					int pAmount = order.get("pAmount").getAsInt();
 				}
 			}
 			
