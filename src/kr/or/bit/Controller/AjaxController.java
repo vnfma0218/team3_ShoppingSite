@@ -1,66 +1,72 @@
 package kr.or.bit.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.bit.Action.Action;
-import kr.or.bit.Action.ActionForward;
-import kr.or.bit.Service.IdCheck;
-import kr.or.bit.Service.SignOut;
-import kr.or.bit.Service.SignUp;
+import kr.or.bit.action.ActionAjax;
+import kr.or.bit.action.ActionAjaxData;
+import kr.or.bit.service_ajax.IdCheckAjaxService;
+import kr.or.bit.service_ajax.SignInAjaxService;
 
-/**
- * Servlet implementation class FrontContorller
- */
-@WebServlet("*.ajax")
+
+@WebServlet(
+      name = "AjaxController",
+      urlPatterns = "*.ajax",
+      loadOnStartup = 1
+      )
 public class AjaxController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
+   
+   private HashMap<String, ActionAjax> actionList = null;
+       
+    public AjaxController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public AjaxController() {
-		super();
-	}
+   public void init(ServletConfig config) throws ServletException {
+      System.out.print("*.ajax Servlet ->");
+      actionList = new HashMap<String, ActionAjax>();
+      
+      actionList.put("/idCheck.ajax", new IdCheckAjaxService());
+      actionList.put("/signIn.ajax", new SignInAjaxService());
+      
+      System.out.println(" initialized");
+   }
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String cmdURI = requestURI.substring(contextPath.length());
+   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String urlCommand = (String)request.getAttribute("urlCommand");
+      
+      PrintWriter out = response.getWriter();
+      ActionAjax actionAjax = actionList.get(urlCommand);
+      if(actionAjax != null) {
+         ActionAjaxData ajaxData = actionAjax.execute(request, response);
+         response.setContentType(ajaxData.getContentType());
+         out.print(ajaxData.getData());
+      } else {
+         // wrong request
+         response.setStatus(404);
+      }
+      
+      out.close();
+   }
 
-		ActionForward forward = new ActionForward();
-		Action action = null;
-		
-	
-	
-		//아이디중복체크
-		if(cmdURI.equals("/idCheck.ajax")) {  
-			action = new IdCheck();
-			forward = action.execute(request, response);
-		}
-		//비밀번호 인증
-		else if(cmdURI.equals("/confirmPwd.ajax")) {  
-			action = new pwdCheck();
-			forward = action.execute(request, response);
-		}
-		if (forward != null) {
-			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
-			dis.forward(request, response);
-		}
-	}
-	
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doProcess(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doProcess(request, response);
-	}
+//   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      // TODO Auto-generated method stub
+//      response.getWriter().append("Served at: ").append(request.getContextPath());
+//   }
+//
+//   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      // TODO Auto-generated method stub
+//      doGet(request, response);
+//   }
 
 }

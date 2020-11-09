@@ -24,6 +24,7 @@ public class MemberDAO {
 		try {
 			Context context = new InitialContext();
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");// java:comp/env/ + name
+			conn = ds.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,7 +37,6 @@ public class MemberDAO {
 		int result = 0;
 
 		try {
-			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPwd());
@@ -61,12 +61,8 @@ public class MemberDAO {
 	// 아이디체크
 	public String idCheck(String id) throws Exception {
 		String check = null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = "select id from MEMBER where id=?";
-		try {
-			conn = ds.getConnection();			
+		try {		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);			
 			rs = pstmt.executeQuery();
@@ -93,19 +89,15 @@ public class MemberDAO {
 	//비밀번호 확인
 	public String pwdCheck(String pwd) throws Exception {
 		String check = null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		String sql = "select pwd from MEMBER where id=?";
 		String pw;
-		try {
-			conn = ds.getConnection();		
+		try {	
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, pwd);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				pw=ds.getString("pwd");
+				pw=rs.getString("pwd");
 				
 				if(pw.equals(pwd)) {
 					check = "success";//  success
@@ -125,16 +117,9 @@ public class MemberDAO {
 		return check;
 	}
 	//회원정보불러오기(아이디)
-	public MemberDTO memberSelect(String id)throws Exception {
-		
-		
+	public MemberDTO memberSelect(String id)throws Exception {	
 		MemberDTO memberDTO = null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
 		try {
-			conn = ds.getConnection();
 			
 			String sql = "SELECT id, pwd, name, hp, address, card FROM MEMBER WHERE ID=?";
 			pstmt = conn.prepareStatement(sql);
@@ -164,11 +149,8 @@ public class MemberDAO {
 	}
 	//회원정보수정
 	public int modifyProfile(MemberDTO member) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
 		int row =0;
 		try {
-			conn = ds.getConnection();
 			String sql = "UPDATE MEMBER SET pwd = ? , name = ? , hp = ? , address = ? , card = ? WHERE id = ?";
 			
 			pstmt = conn.prepareStatement(sql);

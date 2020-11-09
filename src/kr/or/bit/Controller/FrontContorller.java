@@ -1,8 +1,11 @@
 package kr.or.bit.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,66 +14,75 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.bit.Action.Action;
 import kr.or.bit.Action.ActionForward;
-import kr.or.bit.Service.IdCheck;
-import kr.or.bit.Service.SignOut;
-import kr.or.bit.Service.SignUp;
 
-/**
- * Servlet implementation class FrontContorller
- */
-@WebServlet("*.do")
+
+
+@WebServlet(
+      name = "FrontController",
+      urlPatterns = "*.do",
+      loadOnStartup = 1
+      )
 public class FrontContorller extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
+   
+   private HashMap<String, Action> actionList = null;
+       
+    public FrontContorller() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public FrontContorller() {
-		super();
-	}
+   public void init(ServletConfig config) throws ServletException {
+      System.out.print("*.do Servlet ->");
+      actionList = new HashMap<String, Action>();
+      
+      actionList.put("/mainPage.do", new MainPageService()); //메인페이지
+      actionList.put("/signUpPage.do", new SignUpPageService()); //회원가입페이지
+      actionList.put("/signUp.do", new SignUpService()); // 회원가입 기능
+      actionList.put("/signInPage.do", new SignInPageService()); //로그인페이지
+      actionList.put("/signOut.do", new SignOutService());//로그인 기능
+      actionList.put("/category.do", new CategoryPageService()); //카테고리 페이지
+      actionList.put("/salePage.do", new SalePageService()); // 판매자 페이지
+      actionList.put("/cart.do", new CartPageService()); // 장바구니 페이지
+      actionList.put("/purchasePage.do", new PurchasePageService()); //구매페이지
+      
+      System.out.println(" initialized");
+   }
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String cmdURI = requestURI.substring(contextPath.length());
+   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String urlCommand = (String)request.getAttribute("urlCommand");
+      
+      Action action = this.actionList.get(urlCommand);
+      
+      try {
+    	  if(action != null) {
+    	         ActionForward forward = action.execute(request, response);
+    	         
+    	         if(forward.isRedirect()) {
+    	            response.sendRedirect(forward.getPath());
+    	         } else {
+    	            RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+    	            dis.forward(request, response);
+    	         }
+    	      } else {
+    	         response.sendError(404);
+    	      }
+      } catch (Exception e) {
 
-		ActionForward forward = new ActionForward();
-		Action action = null;
+	  } finally {
 		
-		//회원가입페이지
-		if (cmdURI.equals("/signUpPage.do")) {
-			forward.setRedirect(false);
-			forward.setPath("/WEB-INF/views/SignUpPage.jsp");
-		}
+	  }
+      
+   }
 
-		//회원가입요청
-		else if (cmdURI.equals("/signUp.do")) {
-			action = new SignUp();		
-			forward = action.execute(request, response);
-		
-		}
-		//로그아웃
-		else if(cmdURI.equals("/signOut.do")) {  
-			action = new SignOut();
-			forward = action.execute(request, response);
-		}	
-		//아이디중복체크 >>ajax로 이동
-//		else if(cmdURI.equals("/idcheck.do")) {  
-//			action = new IdCheck();
-//			forward = action.execute(request, response);
-//		}
-		if (forward != null) {
-			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
-			dis.forward(request, response);
-		}
-	}
-	
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doProcess(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doProcess(request, response);
-	}
+//   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      // TODO Auto-generated method stub
+//      response.getWriter().append("Served at: ").append(request.getContextPath());
+//   }
+//
+//   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//      // TODO Auto-generated method stub
+//      doGet(request, response);
+//   }
 
 }

@@ -14,7 +14,7 @@ import kr.or.bit.model.DTO.PurchaseDTO;
 public class Purchase implements Action{
 
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException, Exception {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ActionForward forward = new ActionForward();
 	    PurchaseDAO purchaseDAO = new PurchaseDAO();
 	    PurchaseDTO purchaseDTO = new PurchaseDTO();
