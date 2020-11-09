@@ -16,7 +16,7 @@ public class SalePageService implements Action {
 		
 		int saleNum = Integer.parseInt(request.getParameter("pnum"));
 		DTOSalePost salePost = DAOSalePost.getSalePostBySaleNum(saleNum);
-		request.setAttribute("saleNum", saleNum);
+		request.setAttribute("salePost", salePost);
 		
 		forward.setRedirect(false);
 		forward.setPath("Sale.jsp");
