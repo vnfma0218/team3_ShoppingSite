@@ -18,6 +18,12 @@ public class DTOPurchase {
 		this.oAmount = oAmount;
 		this.oCreatedAt = oCreatedAt;
 	}
+	
+	public DTOPurchase(String id, int pNum, int oAmount) {
+		this.id = id;
+		this.pNum = pNum;
+		this.oAmount = oAmount;
+	}
 
 	public int getoNum() {
 		return oNum;

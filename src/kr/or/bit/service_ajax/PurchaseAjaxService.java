@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -12,7 +13,9 @@ import com.google.gson.JsonObject;
 import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.model.dao.DAOProduct;
+import kr.or.bit.model.dao.DAOPurchase;
 import kr.or.bit.model.dto.DTOProduct;
+import kr.or.bit.model.dto.DTOPurchase;
 
 public class PurchaseAjaxService implements ActionAjax {
 
@@ -50,13 +53,18 @@ public class PurchaseAjaxService implements ActionAjax {
 					break;
 				} // 추가할 예외: 판매자 탈퇴
 			}
-			if(!ajaxData.getData().equals("fail")) { // 구매가능
+			if(ajaxData.getData() == null) { // 구매가능
 				iter = orders.iterator();
 				while(iter.hasNext()) {
 					JsonObject order = iter.next().getAsJsonObject();
 					int pNum = order.get("pNum").getAsInt();
 					int pAmount = order.get("pAmount").getAsInt();
+					int resultRow = DAOProduct.decreaseProduct(pNum, pAmount); // resultRow 어떻게 처리할것인지 생각해봐야함..
+					String id = (String)request.getSession().getAttribute("memgerId");
+					DTOPurchase purchase = new DTOPurchase(id, pNum, pAmount);
+					int resultRow2 = DAOPurchase.insertPurchase(purchase);
 				}
+				ajaxData.setData("success");
 			}
 			
 		}

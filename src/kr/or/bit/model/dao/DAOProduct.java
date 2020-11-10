@@ -21,7 +21,8 @@ public class DAOProduct {
 	private static final String SQL_SELECT_PRODUCT_BY_PNUM = "SELECT * FROM PRODUCT WHERE P_NUM = ?";
 	private static final String SQL_UPDATE_PRODUCT_P_AMOUNT = "UPDATE PRODUCT "
 															+ "SET P_AMOUNT = P_AMOUNT - ? WHERE P_NUM = ?";
-	
+
+/*
 //	private static final String SQL_SELECT_PRODUCTS_BY_PNUM = "SELECT * FROM PRODUCT WHERE P_NUM = ?";
 	
 	public static List<DTOProduct> getProductListByPNum(JsonArray products){
@@ -58,7 +59,8 @@ public class DAOProduct {
 		
 		return productList;
 	}
-	
+*/
+
 	public static DTOProduct getDTOProductByPNum(int pNum) {
 		DTOProduct product = null;
 		Connection conn = null;
@@ -82,14 +84,17 @@ public class DAOProduct {
 		return product;
 	}
 	
-	private static int decreaseProduct(int pNum, int pAmount) {
+	public static int decreaseProduct(int pNum, int pAmount) {
 		int resultRow = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = instance.getConnection();
 			pstmt = conn.prepareStatement(SQL_UPDATE_PRODUCT_P_AMOUNT);
+			pstmt.setInt(1, pAmount);
+			pstmt.setInt(2, pNum);
 			
+			resultRow = pstmt.executeUpdate();
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
