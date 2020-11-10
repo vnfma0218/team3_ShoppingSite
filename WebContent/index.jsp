@@ -13,25 +13,13 @@ index
 <script>
 document.getElementById('sendAjax').addEventListener('click', async e => {
 	console.log('click')
-//	const jsonData = { id: 'jack', pwd: '1234' }
+	const jsonData = { id: 'jack', pwd: '1234' }
 //	const jsonData = { products: [{id: 'jack'}, {id: 'jack2'}] }
-//	[
-//	  {
-//	    pNum:num,
-//	    pName:string,
-//	    pAmount:num,
-//	    pPrice:num,
-//	    pSize:string,
-//	    saleNum:num,
-//	    saleTitle:string,
-//	    imageAddr:string
-//	  }
-//	]
-	const jsonData = [{pNum:2, pName:'ÇÏ¾ç¸ğÀÚ', pAmount: 3, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address1'},
-						{pNum:3, pName:'°ËÀº¼ÅÃ÷', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address2'}]
+//	const jsonData = [{pNum:2, pName:'ÇÏ¾ç¸ğÀÚ', pAmount: 3, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address1'},
+//						{pNum:3, pName:'°ËÀº¼ÅÃ÷', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address2'}]
 	const data = JSON.stringify(jsonData);
 //	const data = 'id=jack';
-	const res = await fetch('purchase.ajax', {
+	const res = await fetch('modify.ajax', {
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'

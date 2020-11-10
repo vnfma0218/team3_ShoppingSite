@@ -13,6 +13,8 @@ public class DAOMember {
 	private static final String SQL_SELECT_MEMBER_BY_ID = "SELECT * FROM MEMBER WHERE ID = ?";
 	private static final String SQL_INSERT_MEMBER = "INSERT INTO MEMBER(ID, PWD, NAME, HP, CARD_NUM, ADDRESS) "
 													+ "VALUES(?, ?, ?, ?, ?, ?)";
+	private static final String SQL_UPDATE_MEMBER = "UPDATE MEMBER "
+													+ "SET PWD = ?, HP = ?, CARD_NUM = ?, ADDRESS = ? WHERE ID = ?";
 	
 	public static DTOMember getMemberById(String id) {
 		DTOMember member = null;
@@ -46,10 +48,33 @@ public class DAOMember {
 			pstmt = conn.prepareStatement(SQL_INSERT_MEMBER);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPwd());
-			pstmt.setString(1, member.getName());
-			pstmt.setString(1, member.getHp());
-			pstmt.setString(1, member.getCardNum());
-			pstmt.setString(1, member.getAddress());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, member.getHp());
+			pstmt.setString(5, member.getCardNum());
+			pstmt.setString(6, member.getAddress());
+			
+			resultRow = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt);
+		}
+		
+		return resultRow;
+	}
+	
+	public static int updateMember(DTOMember member) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(SQL_UPDATE_MEMBER);
+			pstmt.setString(1, member.getPwd());
+			pstmt.setString(2, member.getHp());
+			pstmt.setString(3, member.getCardNum());
+			pstmt.setString(4, member.getAddress());
+			pstmt.setString(5, member.getId());
 			
 			resultRow = pstmt.executeUpdate();
 		} catch(SQLException e) {

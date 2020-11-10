@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
-import kr.or.bit.service_ajax.IdCheckAjaxService;
-import kr.or.bit.service_ajax.PurchaseAjaxService;
-import kr.or.bit.service_ajax.SignInAjaxService;
+import kr.or.bit.service_ajax.*;
 
 
 @WebServlet(
@@ -40,6 +38,7 @@ public class AjaxController extends HttpServlet {
 		actionList.put("/idCheck.ajax", new IdCheckAjaxService());
 		actionList.put("/signIn.ajax", new SignInAjaxService());
 		actionList.put("/purchase.ajax", new PurchaseAjaxService());
+		actionList.put("/modify.ajax", new ModifyAjaxService());
 		
 		System.out.println(" initialized");
 	}

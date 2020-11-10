@@ -18,6 +18,14 @@ public class DTOMember {
 		this.cardNum = cardNum;
 		this.address = address;
 	}
+	
+	public DTOMember(String id, String pwd, String hp, String cardNum, String address) {
+		this.id = id;
+		this.pwd = pwd;
+		this.hp = hp;
+		this.cardNum = cardNum;
+		this.address = address;
+	}
 
 	public String getId() {
 		return id;
