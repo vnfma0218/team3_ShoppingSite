@@ -14,15 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
-import kr.or.bit.service.CartPageService;
-import kr.or.bit.service.CategoryPageService;
-import kr.or.bit.service.MainPageService;
-import kr.or.bit.service.PurchasePageService;
-import kr.or.bit.service.SalePageService;
-import kr.or.bit.service.SignInPageService;
-import kr.or.bit.service.SignOutService;
-import kr.or.bit.service.SignUpPageService;
-import kr.or.bit.service.SignUpService;
+import kr.or.bit.service.*;
 
 @WebServlet(
 		name = "FrontController",
@@ -52,6 +44,7 @@ public class FrontController extends HttpServlet {
 		actionList.put("/salePage.do", new SalePageService());
 		actionList.put("/cart.do", new CartPageService());
 		actionList.put("/purchasePage.do", new PurchasePageService());
+		actionList.put("/purchasedPage.do", new PurchasedPageService());
 		
 		System.out.println(" initialized");
 	}
