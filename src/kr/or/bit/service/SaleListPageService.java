@@ -10,7 +10,7 @@ import kr.or.bit.action.ActionForward;
 import kr.or.bit.model.dao.DAOSalePost;
 import kr.or.bit.model.dto.DTOSalePost;
 
-public class saleListPageService implements Action {
+public class SaleListPageService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
