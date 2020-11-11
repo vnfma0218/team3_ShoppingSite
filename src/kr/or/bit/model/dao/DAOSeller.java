@@ -12,6 +12,7 @@ public class DAOSeller {
 	private static DBManager instance = DBManager.getInstance();
 	
 	private static final String SQL_SELECT_SELLER_BY_ID = "SELECT * FROM SELLER WHERE ID = ?";
+	private static final String SQL_SELECT_SELLER_BY_SEL_NUM = "SELECT * FROM SELLER WHERE SEL_NUM = ?";
 	
 	public static DTOSeller ryu_getSellerById(String id) {
 		DTOSeller seller = null;
@@ -19,12 +20,37 @@ public class DAOSeller {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			conn = instance.getConnection();
 			pstmt = conn.prepareStatement(SQL_SELECT_SELLER_BY_ID);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				
+				seller = DAOSeller.setDTOSeller(rs);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt, rs);
+		}
+		
+		return seller;
+	}
+	
+	public static DTOSeller ryu_getSellerBySelNum(int selNum) {
+		DTOSeller seller = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(SQL_SELECT_SELLER_BY_SEL_NUM);
+			pstmt.setInt(1, selNum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				seller = DAOSeller.setDTOSeller(rs);
 			}
 			
 		} catch(SQLException e) {

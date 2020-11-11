@@ -31,7 +31,7 @@ public class CheckSellerFilter implements Filter {
 		if(session.getAttribute("memberId") == null) { // 로그인 안됀 상태
 			httpRes.sendError(401);
 			return;
-		} else if(session.getAttribute("selFlag").equals("N")) { // seller가 아닌 사용자
+		} else if(session.getAttribute("sellerNum") == null) { // seller가 아닌 사용자
 			httpRes.sendError(403);
 			return;
 		}

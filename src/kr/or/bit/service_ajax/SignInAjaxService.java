@@ -9,7 +9,9 @@ import com.google.gson.JsonObject;
 import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.model.dao.DAOMember;
+import kr.or.bit.model.dao.DAOSeller;
 import kr.or.bit.model.dto.DTOMember;
+import kr.or.bit.model.dto.DTOSeller;
 
 public class SignInAjaxService implements ActionAjax {
 
@@ -27,9 +29,13 @@ public class SignInAjaxService implements ActionAjax {
 		} else {
 			HttpSession session = request.getSession();
             session.setAttribute("memberId", member.getId());
-            session.setAttribute("selFlag", member.getSelFlag());
-            session.setMaxInactiveInterval(15 * 60);
             
+            if(member.getSelFlag().equals("Y")) { // seller인 경우
+            	DTOSeller seller = DAOSeller.ryu_getSellerById(id);
+            	session.setAttribute("sellerNum", seller.getSelNum());            	
+            }
+            
+            session.setMaxInactiveInterval(15 * 60);
             ajaxData.setData("success");
 		}
 		ajaxData.setContentType("text/plain");
