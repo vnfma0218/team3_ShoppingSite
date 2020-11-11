@@ -16,7 +16,8 @@ public class DAOSalePost {
 	
 	private static final String SQL_SELECT_SALEPOSTS_BY_CATEGORY = "SELECT * FROM SALE_POST WHERE CATEGORY_NUM = ?";
 	private static final String SQL_SELECT_IMAGES_BY_SALE_NUM = "SELECT IMAGE_ADR FROM IMAGES WHERE SALE_NUM = ?";
-	private static final String SQL_SELECT_SALEPOST_BY_SALE_NUM = "SELECT * FROM SALE_POST SALE_NUM = ?";
+	private static final String SQL_SELECT_SALEPOST_BY_SALE_NUM = "SELECT * FROM SALE_POST WHERE SALE_NUM = ?";
+	private static final String SQL_DELETE_SALEPOST_BY_SALE_NUM = "DELETE * FROM SALE_POST WHERE SALE_NUM = ?";
 	
 	public static List<DTOSalePost> getSalePostListByCategory(int categoryNum){
 		List<DTOSalePost> salePostList = new ArrayList<DTOSalePost>();
@@ -40,6 +41,32 @@ public class DAOSalePost {
 		}
 		return salePostList;
 	}
+	
+	
+	
+	public static DTOSalePost getSalePostDelete(int saleNum) {
+		DTOSalePost salePost = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(SQL_DELETE_SALEPOST_BY_SALE_NUM);
+			pstmt.setInt(1, saleNum);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				salePost = DAOSalePost.setDTOSalePost(rs);
+				DAOSalePost.setDTOSalePostImages(salePost, conn);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt);
+		}
+		
+		return salePost;
+	}
+	
 	
 	public static DTOSalePost getSalePostBySaleNum(int saleNum) {
 		DTOSalePost salePost = null;

@@ -17,7 +17,7 @@ import kr.or.bit.model.dto.DTOProduct;
 
 public class DAOProduct {
 	private static DBManager instance = DBManager.getInstance();
-	
+	private static final String LEE2_SQL_SELECT_PRODUCT = "SELECT * FROM PRODUCT";
 	private static final String SQL_SELECT_PRODUCT_BY_PNUM = "SELECT * FROM PRODUCT WHERE P_NUM = ?";
 	private static final String SQL_UPDATE_PRODUCT_P_AMOUNT = "UPDATE PRODUCT "
 															+ "SET P_AMOUNT = P_AMOUNT - ? WHERE P_NUM = ?";
@@ -60,7 +60,28 @@ public class DAOProduct {
 		return productList;
 	}
 */
-
+	public static DTOProduct lee2_getDTOProduct() {
+		DTOProduct product = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(LEE2_SQL_SELECT_PRODUCT);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				product = DAOProduct.setDTOProduct(rs);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt, rs);
+		}
+		
+		return product;
+	}
+	
 	public static DTOProduct getDTOProductByPNum(int pNum) {
 		DTOProduct product = null;
 		Connection conn = null;

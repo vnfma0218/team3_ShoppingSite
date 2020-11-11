@@ -77,6 +77,7 @@ public class DAOMember {
 			pstmt.setString(5, member.getId());
 			
 			resultRow = pstmt.executeUpdate();
+			System.out.println(resultRow);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
