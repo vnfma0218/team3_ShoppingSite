@@ -19,7 +19,7 @@ document.getElementById('sendAjax').addEventListener('click', async e => {
 //						{pNum:3, pName:'°ËÀº¼ÅÃ÷', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address2'}]
 	const data = JSON.stringify(jsonData);
 //	const data = 'id=jack';
-	const res = await fetch('member/asd.ajax', {
+	const res = await fetch('seller/writeSale.ajax', {
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'
