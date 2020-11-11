@@ -16,7 +16,7 @@ public class DAOSalePost {
 	
 	private static final String SQL_SELECT_SALEPOSTS_BY_CATEGORY = "SELECT * FROM SALE_POST WHERE CATEGORY_NUM = ?";
 	private static final String SQL_SELECT_IMAGES_BY_SALE_NUM = "SELECT IMAGE_ADR FROM IMAGES WHERE SALE_NUM = ?";
-	private static final String SQL_SELECT_SALEPOST_BY_SALE_NUM = "SELECT * FROM SALE_POST SALE_NUM = ?";
+	private static final String SQL_SELECT_SALEPOST_BY_SALE_NUM = "SELECT * FROM SALE_POST WHERE SALE_NUM = ?";
 	private static final String SQL_SELECT_SALEPOSTS_BY_SEL_NUM = "SELECT * FROM SALE_POST WHERE SEL_NUM = ?";
 	
 	public static List<DTOSalePost> getSalePostListByCategory(int categoryNum){
