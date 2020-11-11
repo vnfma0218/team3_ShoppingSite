@@ -1,8 +1,6 @@
 package kr.or.bit.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/member/*")
-public class CheckMemberFilter implements Filter {
+@WebFilter("/seller/*")
+public class CheckSellerFilter implements Filter {
 
-    public CheckMemberFilter() {
+    public CheckSellerFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -32,6 +30,9 @@ public class CheckMemberFilter implements Filter {
 		
 		if(session.getAttribute("memberId") == null) { // 로그인 안됀 상태
 			httpRes.sendError(401);
+			return;
+		} else if(session.getAttribute("selFlag").equals("N")) { // seller가 아닌 사용자
+			httpRes.sendError(403);
 			return;
 		}
 		

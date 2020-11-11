@@ -27,6 +27,7 @@ public class SignInAjaxService implements ActionAjax {
 		} else {
 			HttpSession session = request.getSession();
             session.setAttribute("memberId", member.getId());
+            session.setAttribute("selFlag", member.getSelFlag());
             session.setMaxInactiveInterval(15 * 60);
             
             ajaxData.setData("success");
