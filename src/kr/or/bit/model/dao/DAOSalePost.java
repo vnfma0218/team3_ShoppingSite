@@ -17,6 +17,7 @@ public class DAOSalePost {
 	private static final String SQL_SELECT_SALEPOSTS_BY_CATEGORY = "SELECT * FROM SALE_POST WHERE CATEGORY_NUM = ?";
 	private static final String SQL_SELECT_IMAGES_BY_SALE_NUM = "SELECT IMAGE_ADR FROM IMAGES WHERE SALE_NUM = ?";
 	private static final String SQL_SELECT_SALEPOST_BY_SALE_NUM = "SELECT * FROM SALE_POST SALE_NUM = ?";
+	private static final String SQL_SELECT_SALEPOSTS_BY_SEL_NUM = "SELECT * FROM SALE_POST WHERE SEL_NUM = ?";
 	
 	public static List<DTOSalePost> getSalePostListByCategory(int categoryNum){
 		List<DTOSalePost> salePostList = new ArrayList<DTOSalePost>();
@@ -62,6 +63,30 @@ public class DAOSalePost {
 		}
 		
 		return salePost;
+	}
+	
+	public static List<DTOSalePost> ryu_getSalePostListBySelNum(int selNum) {
+		List<DTOSalePost> salePostList = new ArrayList<DTOSalePost>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(SQL_SELECT_SALEPOSTS_BY_SEL_NUM);
+			pstmt.setInt(1, selNum);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				DTOSalePost salePost = DAOSalePost.setDTOSalePost(rs);
+				DAOSalePost.setDTOSalePostImages(salePost, conn);
+				salePostList.add(salePost);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt, rs);
+		}
+		
+		return salePostList;
 	}
 	
 	private static DTOSalePost setDTOSalePost(ResultSet rs) throws SQLException {
