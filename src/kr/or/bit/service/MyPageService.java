@@ -14,7 +14,7 @@ public class MyPageService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String id = (String)request.getAttribute("memberId");
+		String id = (String)request.getSession().getAttribute("memberId");
 		DTOMember member = DAOMember.getMemberById(id);
 		request.setAttribute("member", member);
 		

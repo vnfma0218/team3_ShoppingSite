@@ -24,7 +24,7 @@ public class ModifyAjaxService implements ActionAjax {
 		String hp = jsonBody.get("hp").getAsString();
 		String cardNum = jsonBody.get("card").getAsString();
 		String address = jsonBody.get("address").getAsString();
-		String id = (String)request.getAttribute("memberId");
+		String id = (String)request.getSession().getAttribute("memberId");
 		DTOMember member = new DTOMember(id, pwd, hp, cardNum, address);
 		int resultRow = DAOMember.updateMember(member);
 		
