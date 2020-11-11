@@ -46,6 +46,7 @@ public class FrontController extends HttpServlet {
 		actionList.put("/member/purchasePage.do", new PurchasePageService());
 		actionList.put("/member/purchasedPage.do", new PurchasedPageService());
 		actionList.put("/member/myPage.do", new MyPageService());
+		actionList.put("/seller/sellerPage.do", new SellerPageService());
 		
 		System.out.println(" initialized");
 	}
