@@ -10,14 +10,14 @@ import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.model.dao.DAOMember;
 import kr.or.bit.model.dto.DTOMember;
 
-public class ModifyAjaxService implements ActionAjax {
+public class EditMemberAjaxService implements ActionAjax {
 
 	@Override
 	public ActionAjaxData execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionAjaxData ajaxData = new ActionAjaxData();
 //		{address:string,
 //			pwd:string,
-//			card:string,
+//			cardNum:string,
 //			hp:string}
 		JsonObject jsonBody = (JsonObject)request.getAttribute("jsonBody");
 		String pwd = jsonBody.get("pwd").getAsString();
