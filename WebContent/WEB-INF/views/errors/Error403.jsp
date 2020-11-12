@@ -6,14 +6,12 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body{
-	background-image: url("../../../images/500.png");
+	background-image: url("../../../images/403.jpg");
 }
 </style>
-<title>Error 500 Server Error</title>
+<title>Error 403 Forbidden</title>
 </head>
 <body>
-<h1>500 Server Error</h1><hr>
-<h3>
-Description : Internal Server Error </h3> 
+
 </body>
 </html>

@@ -9,28 +9,30 @@ import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.model.dao.DAOMember;
 import kr.or.bit.model.dto.DTOMember;
+import kr.or.bit.utils.c_SHAUtil;
+import kr.or.bit.utils.c_Salt;
 
-public class EditMemberAjaxService implements ActionAjax {
+public class c_EditMemberAjaxService implements ActionAjax {
 
 	@Override
 	public ActionAjaxData execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionAjaxData ajaxData = new ActionAjaxData();
-//		{address:string,
+		c_SHAUtil sha = new c_SHAUtil();
+		c_Salt salt = new c_Salt();
+		String s =salt.readSalt("key.txt");
+//		{
 //			pwd:string,
-//			card:string,
-//			hp:string}
+//			}
 		JsonObject jsonBody = (JsonObject)request.getAttribute("jsonBody");
-		String pwd = jsonBody.get("pwd").getAsString();
+		String pwd =sha.getSha512(s+jsonBody.get("pwd").getAsString());
+		System.out.println(pwd);
 		String hp = jsonBody.get("hp").getAsString();
-		String cardNum = jsonBody.get("card_num").getAsString();
+		
+		String cardNum = jsonBody.get("card").getAsString();
 		String address = jsonBody.get("address").getAsString();
-		String id = (String)request.getAttribute("id");
+		String id = (String)request.getAttribute("memberId");
 		DTOMember member = new DTOMember(id, pwd, hp, cardNum, address);
-<<<<<<< HEAD
 		int resultRow = DAOMember.c_updateMember(member);
-=======
-		int resultRow = DAOMember.updateMember(member);
->>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 		
 		if(resultRow == 1) ajaxData.setData("success");
 		else ajaxData.setData("fail");

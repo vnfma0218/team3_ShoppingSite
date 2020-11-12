@@ -9,6 +9,10 @@
 </head>
 <body>
 	<form action="signUp.do">
+<<<<<<< HEAD
+	
+=======
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 		userID<input type="text" id="id" name="id"><br>
 		P  W  D<input type="password" id="pwd" name="pwd"><br>
 		N A M E<input type="text" id="name" name="name"><br>
@@ -23,10 +27,58 @@
 		PWD<input type="password" id="pwd" name="pwd"><br>
 		<input type="submit" id="SignIn">
 	</form>
+<<<<<<< HEAD
+<div id="message" >status</div>
+=======
 <div id="message"></div>
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 index
 <input type="button" id="sendAjax" value="send ajax">
 </body>
+ <script type="text/javascript">
+ fetch("SignIn.do",{
+		method : "POST",
+	   	body : JSON.stringify({
+	           id : this.state.id,
+	      	   pwd : this.state.password
+	        })
+	})
+	.then(res => res.json())
+	.then(res => {
+		console.log(res)
+	 	localStorage.setItem('access-token', res.access_token);
+	})
+  </script>
+<script>
+/*null오류 너무뜸
+$(document).ready(function() {
+	$("#SignIn").click(function() {
+		var action = $("#SignIn").attr('action');
+		var data = {
+			id: $("#id").val(),
+			pwd: $("#pw").val()			
+		};
+		console.log('1st');
+		$.ajax({
+			type: "POST",
+			url: "signIn.ajax",
+			body: data,
+			
+			success: function(response) {
+				if(response == 'success') {
+					$("#message").html("<p style='color:green;font-weight:bold'>로그인 성공!</p>");
+					$("#SignIn").slideUp('slow');
+				}
+				else {
+					$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	
+				}
+			}
+		});
+		return false;
+	});
+});
+*/
+</script>
 <script>
 /*null오류 너무뜸
 $(document).ready(function() {

@@ -22,10 +22,14 @@ public class SignUpService implements Action {
 		String address = request.getParameter("address");
 		String cardNum = request.getParameter("card_num");
 		
+<<<<<<< HEAD
+		System.out.println("pwd(변환전):"+pwd);
+=======
 		System.out.println(pwd);
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 		
 		DTOMember member = new DTOMember(id, pwd, name, hp, cardNum, address);
-		int resultRow = DAOMember.insertMember(member); // 어떻게 처리할지 생각해보자
+		int resultRow = DAOMember.c_insertMember(member); // 어떻게 처리할지 생각해보자
 		
 		forward.setRedirect(true);
 		forward.setPath("mainPage.do");
