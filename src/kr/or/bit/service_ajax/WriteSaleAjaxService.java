@@ -63,10 +63,9 @@ public class WriteSaleAjaxService implements ActionAjax {
 			}
 			
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
-			ajaxData.setData("fail");
+			e.printStackTrace();
 		}
-		
+		ajaxData.setContentType("text/plain");
 		
 		return ajaxData;
 	}
