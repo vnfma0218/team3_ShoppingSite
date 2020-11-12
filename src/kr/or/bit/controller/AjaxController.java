@@ -40,6 +40,7 @@ public class AjaxController extends HttpServlet {
 		actionList.put("/member/purchase.ajax", new PurchaseAjaxService());
 		actionList.put("/member/editMember.ajax", new EditMemberAjaxService());
 		actionList.put("/seller/writeSale.ajax", new WriteSaleAjaxService());
+		actionList.put("/seller/editSale.ajax", new EditSaleAjaxService());
 		
 		System.out.println(" initialized");
 	}
