@@ -12,9 +12,9 @@ import kr.or.bit.utils.SHAUtil;
 
 public class DAOMember {
 	private static DBManager instance = DBManager.getInstance();
-	private static final String SQL_SELECT_MEMBER_BY_ID = "SELECT ID, PWD, NAME, HP, CARD_NUM, ADDRESS, DEL_FLAG "
+	private static final String SQL_SELECT_MEMBER_BY_ID = "SELECT ID, PWD, NAME, HP, CARD_NUM, ADDRESS, DEL_FLAG"
 													+ "FROM MEMBER WHERE ID = ?";
-	private static final String SQL_INSERT_MEMBER = "INSERT INTO MEMBER(ID, PWD, NAME, HP, CARD_NUM, ADDRESS, SEL_FLAG) "
+	private static final String SQL_INSERT_MEMBER = "INSERT INTO MEMBER(ID, PWD, NAME, HP, CARD_NUM, ADDRESS) "
 													+ "VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE_MEMBER = "UPDATE MEMBER "
 													+ "SET PWD = ?, HP = ?, CARD_NUM = ?, ADDRESS = ? WHERE ID = ?";
@@ -42,6 +42,11 @@ public class DAOMember {
 		return member;
 	}
 	
+	/**
+	 * 키파일 생성하지 않고 기존 것 사용
+	 * @param member
+	 * @return
+	 */
 	public static int insertMember(DTOMember member) {
 		SHAUtil sha = new SHAUtil();
 		Salt salt = new Salt();
@@ -54,9 +59,8 @@ public class DAOMember {
 			conn = instance.getConnection();
 			pstmt = conn.prepareStatement(SQL_INSERT_MEMBER);
 			pstmt.setString(1, member.getId());
-			System.out.println("updateId:"+member.getId());
-			salt.addSalt(member.getId());
-			String s =salt.readSalt(member.getId());
+			
+			String s =salt.readSalt();
 			System.out.println("s:"+s);
 			pstmt.setString(2, sha.getSha512(s+member.getPwd()));
 			pstmt.setString(3, member.getName());
@@ -86,7 +90,7 @@ public class DAOMember {
 		try {
 			conn = instance.getConnection();
 			pstmt = conn.prepareStatement(SQL_UPDATE_MEMBER);
-			String s =salt.readSalt(member.getId());//ID불러오기
+			String s =salt.readSalt();
 			pstmt.setString(1, sha.getSha512(s+member.getPwd()));
 			pstmt.setString(2, member.getHp());
 			pstmt.setString(3, member.getCardNum());

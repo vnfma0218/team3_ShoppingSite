@@ -7,23 +7,28 @@ import java.util.Scanner;
 
 public class Salt {
 	
-	
+	/*
 	public void addSalt(String id) {
 		
 		makeFile(id);
 		
 	}
-	public String readSalt(String id) {
+	*/
+	public String readSalt() {
 		
-		return readFile(id);
+		return readFile();
 		
 	}
-	
+	/**
+	 * 아이디를 입력받고 키파일생성하는 함수
+	 * @param id
+	 */
+	/*
 	private void makeFile(String id) {
 		try {
 			FileWriter fr = new FileWriter("C:\\Users\\user\\key\\"+id+".key.txt");
 			double d = Math.random();
-			String comp = "오늘도 화이팅"+d+"^^!";
+			String comp = "오늘도 즐거운 코딩"+d+"^^!";
 			fr.write(comp);
 			fr.close();
 			System.out.println("파일생성성공:"+id+".key.txt");
@@ -33,11 +38,18 @@ public class Salt {
 		}
 		
 	}
+	*/
 	
-	private  String readFile(String id) {
+	
+	/**
+	 * 
+	 * @param id 유저아이디
+	 * @return
+	 */
+	private  String readFile() {
 		String data = "";
 		try {
-			File f = new File("C:\\Users\\user\\key\\"+id+".key.txt");
+			File f = new File("C:\\Users\\user\\key\\key.txt");
 			Scanner sc = new Scanner(f);
 			while(sc.hasNextLine()) {
 				data = sc.nextLine();

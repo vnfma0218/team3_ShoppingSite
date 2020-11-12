@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<form action="signUp.do">
@@ -17,15 +18,45 @@
 		<p><input type="submit"></p>
 	</form>
 	
-	<form action="signIn.do">
+	<form id="SignIn" name="SignIn" action="signIn.ajax" method="POST">
 			ID<input type="text" id="id" name="id"><br>
 		PWD<input type="password" id="pwd" name="pwd"><br>
 		<input type="submit" id="SignIn">
 	</form>
-
+<div id="message"></div>
 index
 <input type="button" id="sendAjax" value="send ajax">
 </body>
+<script>
+/*null오류 너무뜸
+$(document).ready(function() {
+	$("#SignIn").click(function() {
+		var action = $("#SignIn").attr('action');
+		var data = {
+			id: $("#id").val(),
+			pwd: $("#pw").val()			
+		};
+		console.log('1st');
+		$.ajax({
+			type: "POST",
+			url: "signIn.ajax",
+			body: data,
+			
+			success: function(response) {
+				if(response == 'success') {
+					$("#message").html("<p style='color:green;font-weight:bold'>로그인 성공!</p>");
+					$("#SignIn").slideUp('slow');
+				}
+				else {
+					$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	
+				}
+			}
+		});
+		return false;
+	});
+});
+*/
+</script>
 <script>
 document.getElementById('sendAjax').addEventListener('click', async e => {
 	console.log('click')
