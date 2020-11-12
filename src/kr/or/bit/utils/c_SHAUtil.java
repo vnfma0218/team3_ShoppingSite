@@ -4,16 +4,12 @@ import java.security.MessageDigest;
 
 
 /**
-<<<<<<< HEAD
- * ?•´?‹±?•Œê³ ë¦¬ì¦˜ì„ ?‚¬?š©?•´?„œ ?•”?˜¸?™”?•˜?Š” ?´?ž˜?Š¤
-=======
  * 
->>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
  * @author user
  *
  */
 
-public class SHAUtil {
+public class c_SHAUtil {
 	
 	
 	
@@ -26,11 +22,7 @@ public class SHAUtil {
 		    MessageDigest digest = MessageDigest.getInstance("SHA-512");
 		    digest.reset();
 		    digest.update( msg.getBytes("UTF-8"));
-<<<<<<< HEAD
-            // byte[]  ë¥? ë¬¸ìž?—´ë¡? ë³??™˜?•˜?Š” ë¶?ë¶?
-=======
             // byte[] 
->>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 		    result = String.format("%0128x", new java.math.BigInteger(1, digest.digest()));
 		} catch (Exception e) {
 			result ="";

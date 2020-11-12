@@ -7,12 +7,24 @@ import java.util.Scanner;
 
 public class Salt {
 	
+<<<<<<< HEAD
+	
+=======
 	/*
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 	public void addSalt(String id) {
 		
 		makeFile(id);
 		
 	}
+<<<<<<< HEAD
+	public String readSalt(String id) {
+		
+		return readFile(id);
+		
+	}
+	
+=======
 	*/
 	public String readSalt() {
 		
@@ -24,11 +36,16 @@ public class Salt {
 	 * @param id
 	 */
 	/*
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 	private void makeFile(String id) {
 		try {
 			FileWriter fr = new FileWriter("C:\\Users\\user\\key\\"+id+".key.txt");
 			double d = Math.random();
+<<<<<<< HEAD
+			String comp = "오늘도 화이팅"+d+"^^!";
+=======
 			String comp = "오늘도 즐거운 코딩"+d+"^^!";
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 			fr.write(comp);
 			fr.close();
 			System.out.println("파일생성성공:"+id+".key.txt");
@@ -38,6 +55,13 @@ public class Salt {
 		}
 		
 	}
+<<<<<<< HEAD
+	
+	private  String readFile(String id) {
+		String data = "";
+		try {
+			File f = new File("C:\\Users\\user\\key\\"+id+".key.txt");
+=======
 	*/
 	
 	
@@ -50,6 +74,7 @@ public class Salt {
 		String data = "";
 		try {
 			File f = new File("C:\\Users\\user\\key\\key.txt");
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 			Scanner sc = new Scanner(f);
 			while(sc.hasNextLine()) {
 				data = sc.nextLine();

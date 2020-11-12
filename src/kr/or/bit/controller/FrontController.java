@@ -46,8 +46,13 @@ public class FrontController extends HttpServlet {
 		actionList.put("/purchasePage.do", new PurchasePageService());
 		actionList.put("/purchasedPage.do", new PurchasedPageService());
 		actionList.put("/myPage.do", new MyPageService());
+<<<<<<< HEAD
+		actionList.put("/deleteMemberPage.do", new c_DeleteMemberPageService());
+		actionList.put("/productAddPage.do", new c_ProductAddPageService());
+=======
 		actionList.put("/deleteMemberPage.do", new DeleteMemberPageService());
 		actionList.put("/productAddPage.do", new ProductAddPageService());
+>>>>>>> f6fa83a0eea4f294321c96fd8368998a4f885e8f
 		
 		System.out.println(" initialized");
 	}
@@ -66,7 +71,7 @@ public class FrontController extends HttpServlet {
 				dis.forward(request, response);
 			}
 		} else {
-			response.sendError(404);
+			response.sendError(404);			
 		}
 	}
 	
