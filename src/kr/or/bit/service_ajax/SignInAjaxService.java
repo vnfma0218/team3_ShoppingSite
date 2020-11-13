@@ -28,15 +28,15 @@ public class SignInAjaxService implements ActionAjax {
 			ajaxData.setData("fail");
 		} else {
 			HttpSession session = request.getSession();
-			session.setAttribute("memberId", member.getId());
-
-			if(member.getSelFlag().equals("Y")) { // seller인 경우
-				DTOSeller seller = DAOSeller.ryu_getSellerById(id);
-				session.setAttribute("sellerNum", seller.getSelNum());
-			}
-
-			session.setMaxInactiveInterval(15 * 60);
-			ajaxData.setData("success");
+            session.setAttribute("memberId", member.getId());
+            
+            if(member.getSelFlag().equals("Y")) { // seller인 경우
+            	DTOSeller seller = DAOSeller.ryu_getSellerById(id);
+            	session.setAttribute("sellerNum", seller.getSelNum());            	
+            }
+            
+            session.setMaxInactiveInterval(15 * 60);
+            ajaxData.setData("success");
 		}
 		ajaxData.setContentType("text/plain");
 

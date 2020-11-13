@@ -10,7 +10,7 @@ public class DTOMember {
 	private String selFlag;
 
 	public DTOMember() {}
-
+	
 	public DTOMember(String id, String pwd, String name, String hp, String cardNum, String address, String selFlag) {
 		this.id = id;
 		this.pwd = pwd;
@@ -93,5 +93,4 @@ public class DTOMember {
 	public void setSelFlag(String selFlag) {
 		this.selFlag = selFlag;
 	}
-
 }

@@ -5,21 +5,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.bit.action.Action;
 import kr.or.bit.action.ActionForward;
-import kr.or.bit.model.dao.DAOMember;
-import kr.or.bit.model.dto.DTOMember;
+import kr.or.bit.model.dao.DAOSeller;
+import kr.or.bit.model.dto.DTOSeller;
 
-public class MyPageService implements Action {
+public class SellerPageService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
 		
-		String id = (String)request.getSession().getAttribute("memberId");
-		DTOMember member = DAOMember.getMemberById(id);
-		request.setAttribute("member", member);
+		int selNum = (int)request.getSession().getAttribute("sellerNum");
+		DTOSeller seller = DAOSeller.ryu_getSellerBySelNum(selNum);
+		request.setAttribute("seller", seller);
 		
 		forward.setRedirect(false);
-		forward.setPath("MyPage.jsp");
+		forward.setPath("Seller.jsp");
 		
 		return forward;
 	}

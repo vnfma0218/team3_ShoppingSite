@@ -9,6 +9,7 @@ import kr.or.bit.model.DBManager;
 import kr.or.bit.model.dto.DTOSeller;
 
 public class DAOSeller {
+
     private static DBManager instance = DBManager.getInstance();
 
     private static final String SQL_SELECT_SELLER_BY_ID = "SELECT * FROM SELLER WHERE ID = ?";
