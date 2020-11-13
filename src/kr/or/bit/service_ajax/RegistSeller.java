@@ -8,10 +8,8 @@ import kr.or.bit.model.dto.DTOMember;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class DeleteMemberAjaxService implements ActionAjax {
-
+public class RegistSeller implements ActionAjax {
     @Override
     public ActionAjaxData execute(HttpServletRequest request, HttpServletResponse response) {
         ActionAjaxData ajaxData = new ActionAjaxData();
@@ -23,8 +21,8 @@ public class DeleteMemberAjaxService implements ActionAjax {
         DAOMember daoMember = new DAOMember();
         if (dtoMember.getId() == id) {
             if (pwd == dtoMember.getPwd()) {
-                daoMember.lim_DeleteMember(id);
-                ajaxData.setData("success");
+                //daoMember.lim_RegistSeller(id);
+
             }
         } else {
             ajaxData.setData("fail");

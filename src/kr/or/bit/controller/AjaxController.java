@@ -39,7 +39,7 @@ public class AjaxController extends HttpServlet {
 		actionList.put("/signIn.ajax", new SignInAjaxService());
 		actionList.put("/purchase.ajax", new PurchaseAjaxService());
 		actionList.put("/modify.ajax", new ModifyAjaxService());
-		
+		actionList.put("/member/deleteMember.ajax?id=???",new DeleteMemberAjaxService());
 		System.out.println(" initialized");
 	}
 
