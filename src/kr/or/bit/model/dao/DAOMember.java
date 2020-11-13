@@ -15,6 +15,7 @@ public class DAOMember {
 													+ "VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE_MEMBER = "UPDATE MEMBER "
 													+ "SET PWD = ?, HP = ?, CARD_NUM = ?, ADDRESS = ? WHERE ID = ?";
+	private static final String SQL_DELETE_MEMBER ="UPDATE MEMBER SET DEL_FLAG = 'Y' WHERE ID = ?";
 	
 	public static DTOMember getMemberById(String id) {
 		DTOMember member = null;
@@ -83,6 +84,23 @@ public class DAOMember {
 			instance.freeConnection(conn, pstmt);
 		}
 		
+		return resultRow;
+	}
+
+	public static int lim_DeleteMember(String id) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt =conn.prepareStatement(SQL_DELETE_MEMBER);
+			pstmt.setString(1,id);
+
+			resultRow = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return resultRow;
 	}
 	
