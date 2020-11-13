@@ -4,7 +4,9 @@ import com.google.gson.JsonObject;
 import kr.or.bit.action.ActionAjax;
 import kr.or.bit.action.ActionAjaxData;
 import kr.or.bit.model.dao.DAOMember;
+import kr.or.bit.model.dao.DAOSeller;
 import kr.or.bit.model.dto.DTOMember;
+import kr.or.bit.model.dto.DTOSeller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +21,15 @@ public class RegistSeller implements ActionAjax {
 
         DTOMember dtoMember = DAOMember.getMemberById(id);
         DAOMember daoMember = new DAOMember();
+        DAOSeller daoSeller = new DAOSeller();
+        DTOSeller dtoSeller = new DTOSeller();
         if (dtoMember.getId() == id) {
             if (pwd == dtoMember.getPwd()) {
-                //daoMember.lim_RegistSeller(id);
+
+                daoSeller.lim_registSeller(dtoSeller);
+                //sel_flag 'N' -> 'Y'
+                daoMember.lim_RegistSeller(id);
+                ajaxData.setData("success");
 
             }
         } else {
