@@ -18,11 +18,11 @@ public class SignInAjaxService implements ActionAjax {
 	@Override
 	public ActionAjaxData execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionAjaxData ajaxData = new ActionAjaxData();
-		
+
 		JsonObject body = (JsonObject)request.getAttribute("jsonBody");
 		String id = body.get("id").getAsString();
 		String pwd = body.get("pwd").getAsString();
-		
+
 		DTOMember member = DAOMember.getMemberById(id);
 		if(member == null || !pwd.equals(member.getPwd())) {
 			ajaxData.setData("fail");
@@ -39,7 +39,7 @@ public class SignInAjaxService implements ActionAjax {
             ajaxData.setData("success");
 		}
 		ajaxData.setContentType("text/plain");
-		
+
 		return ajaxData;
 	}
 
