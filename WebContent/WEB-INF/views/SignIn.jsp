@@ -41,7 +41,7 @@
   
   </div>
   
-  <button class="btn btn-lg btn-primary btn-block" id="signBtn">로그인</button>
+  <a class="btn btn-lg btn-primary btn-block" id="signBtn">로그인</a>
   <a class="btn btn-lg btn-primary btn-block" href="signUpPage.do">회원가입</a>
 </form>
 </body>

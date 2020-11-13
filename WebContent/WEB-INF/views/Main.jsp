@@ -86,6 +86,7 @@
             <li class="category-menu-item">마이페이지</li>
             <li class="category-menu-item">
                 <a href="signInPage.do">로그인</a></li>
+                <a href="signOut.do">로그아웃</a></li>
         </ul>
     </div>
 
@@ -168,7 +169,7 @@
         </div>
 
         <div class="item">
-            <img src="/images/19309420_1598777941_image1_M.jpg" alt="">
+            <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
             <div class="store-title">
                 <p>세미브랜드</p>
             </div>
