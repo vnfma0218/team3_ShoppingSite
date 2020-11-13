@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@ document.getElementById('sendAjax').addEventListener('click', async e => {
 //						{pNum:3, pName:'°ËÀº¼ÅÃ÷', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ðÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address2'}]
 	const data = JSON.stringify(jsonData);
 //	const data = 'id=jack';
-	const res = await fetch('modify.ajax', {
+	const res = await fetch('seller/writeSale.ajax', {
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'
@@ -30,6 +30,7 @@ document.getElementById('sendAjax').addEventListener('click', async e => {
 	    body: data
 	  });
 	console.log(res.status)
+	console.log(res.text())
 });
 </script>
 </html>

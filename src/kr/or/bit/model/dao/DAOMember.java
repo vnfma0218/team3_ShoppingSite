@@ -93,8 +93,9 @@ public class DAOMember {
 		String hp = rs.getString("HP").trim();
 		String cardNum = rs.getString("CARD_NUM").trim();
 		String address = rs.getString("ADDRESS").trim();
+		String selFlag = rs.getString("SEL_FLAG").trim();
 		
-		DTOMember member = new DTOMember(id, pwd, name, hp, cardNum, address);
+		DTOMember member = new DTOMember(id, pwd, name, hp, cardNum, address, selFlag);
 		return member;
 	}
 }
