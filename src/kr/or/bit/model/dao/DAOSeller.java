@@ -84,6 +84,7 @@ public class DAOSeller {
 
     }
 
+
     private static DTOSeller setDTOSeller(ResultSet rs) throws SQLException {
         int selNum = rs.getInt("SEL_NUM");
         String id = rs.getString("ID");

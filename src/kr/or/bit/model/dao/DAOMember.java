@@ -17,6 +17,7 @@ public class DAOMember {
 													+ "SET PWD = ?, HP = ?, CARD_NUM = ?, ADDRESS = ? WHERE ID = ?";
 	private static final String SQL_DELETE_MEMBER ="UPDATE MEMBER SET DEL_FLAG = 'Y' WHERE ID = ?";
 	private static final String SQL_REGIST_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'Y' WHERE ID =?";
+	private static final String SQL_DELETE_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'N' WHERE ID =?";
 	public static DTOMember getMemberById(String id) {
 		DTOMember member = null;
 		Connection conn = null;
@@ -110,6 +111,23 @@ public class DAOMember {
 		try {
 			conn = instance.getConnection();
 			pstmt =conn.prepareStatement(SQL_REGIST_SELLER);
+			pstmt.setString(1,id);
+
+			resultRow = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultRow;
+	}
+
+	public static int lim_DeleteSeller(String id) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt =conn.prepareStatement(SQL_DELETE_SELLER);
 			pstmt.setString(1,id);
 
 			resultRow = pstmt.executeUpdate();

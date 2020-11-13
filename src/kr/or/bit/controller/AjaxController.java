@@ -41,6 +41,8 @@ public class AjaxController extends HttpServlet {
 		actionList.put("/modify.ajax", new ModifyAjaxService());
 		actionList.put("/member/deleteMember.ajax?id=???",new DeleteMemberAjaxService());
 		actionList.put("/member/registSeller.ajax", new RegistSeller());
+		actionList.put("/seller/deleteSeller.ajax?sellerNum=???",new DeleteSellerAjaxService());
+
 		System.out.println(" initialized");
 	}
 
