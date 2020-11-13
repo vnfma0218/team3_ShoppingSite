@@ -11,7 +11,7 @@ import kr.or.bit.model.dto.DTOSeller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RegistSeller implements ActionAjax {
+public class RegistSellerAjaxService implements ActionAjax {
     @Override
     public ActionAjaxData execute(HttpServletRequest request, HttpServletResponse response) {
         ActionAjaxData ajaxData = new ActionAjaxData();
