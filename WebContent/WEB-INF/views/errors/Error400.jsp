@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body{
-	background-image: url("https://192.168.0.11:8443/team3_ShoppingSite/images/404.jpg");
+	background-image: url("https://192.168.0.11:8443/team3_ShoppingSite/images/400.jpg");
 }
 </style>
-<title>Error 404 Not Found</title>
+<title>Error 400 Bad Request</title>
 </head>
 <body>
-<h1>404 Not Found</h1><hr>
-<h3>But you can see this cute cat.</h3>
+<h1>Error 400 Bad Request</h1>
 </body>
 </html>

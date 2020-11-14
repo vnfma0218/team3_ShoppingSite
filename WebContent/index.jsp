@@ -9,6 +9,7 @@
 <body>
 index
 <input type="button" id="sendAjax" value="send ajax">
+<a href="mainPage.do">메인페이지</a>
 </body>
 <script>
 document.getElementById('sendAjax').addEventListener('click', async e => {
