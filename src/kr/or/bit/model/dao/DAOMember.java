@@ -20,6 +20,7 @@ public class DAOMember {
 	private static final String SQL_DELETE_MEMBER ="UPDATE MEMBER SET DEL_FLAG = 'Y' WHERE ID = ?";
 	private static final String SQL_REGIST_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'Y' WHERE ID =?";
 	private static final String SQL_DELETE_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'N' WHERE ID =?";
+	
 	public static DTOMember getMemberById(String id) {
 		DTOMember member = null;
 		Connection conn = null;
