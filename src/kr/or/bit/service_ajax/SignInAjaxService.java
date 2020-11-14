@@ -29,7 +29,7 @@ public class SignInAjaxService implements ActionAjax {
 		JsonObject body = (JsonObject)request.getAttribute("jsonBody");
 		String id = body.get("id").getAsString();
 		String pwd = body.get("pwd").getAsString();
-		
+
 		DTOMember member = DAOMember.getMemberById(id);
 		System.out.println("pwd:"+pwd);
 		if(member == null || !sha.getSha512(s+pwd).equals(member.getPwd())) {
@@ -47,7 +47,7 @@ public class SignInAjaxService implements ActionAjax {
             ajaxData.setData("success");
 		}
 		ajaxData.setContentType("text/plain");
-		
+
 		return ajaxData;
 	}
 

@@ -8,7 +8,7 @@ public class DTOMember {
 	private String cardNum;
 	private String address;
 	private String selFlag;
-	
+
 	public DTOMember() {}
 	
 	public DTOMember(String id, String pwd, String name, String hp, String cardNum, String address, String selFlag) {
@@ -20,7 +20,7 @@ public class DTOMember {
 		this.address = address;
 		this.selFlag = selFlag;
 	}
-	
+
 	public DTOMember(String id, String pwd, String name, String hp, String cardNum, String address) {
 		this.id = id;
 		this.pwd = pwd;
@@ -29,7 +29,7 @@ public class DTOMember {
 		this.cardNum = cardNum;
 		this.address = address;
 	}
-	
+
 	public DTOMember(String id, String pwd, String hp, String cardNum, String address) {
 		this.id = id;
 		this.pwd = pwd;

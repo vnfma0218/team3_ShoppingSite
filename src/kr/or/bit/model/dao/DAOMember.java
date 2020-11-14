@@ -17,7 +17,9 @@ public class DAOMember {
 													+ "VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE_MEMBER = "UPDATE MEMBER "
 													+ "SET PWD = ?, HP = ?, CARD_NUM = ?, ADDRESS = ? WHERE ID = ?";
-	
+	private static final String SQL_DELETE_MEMBER ="UPDATE MEMBER SET DEL_FLAG = 'Y' WHERE ID = ?";
+	private static final String SQL_REGIST_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'Y' WHERE ID =?";
+	private static final String SQL_DELETE_SELLER ="UPDATE MEMBER SET SEL_FLAG = 'N' WHERE ID =?";
 	public static DTOMember getMemberById(String id) {
 		DTOMember member = null;
 		Connection conn = null;
@@ -87,6 +89,56 @@ public class DAOMember {
 		
 		return resultRow;
 	}
+
+	public static int lim_DeleteMember(String id) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt =conn.prepareStatement(SQL_DELETE_MEMBER);
+			pstmt.setString(1,id);
+
+			resultRow = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultRow;
+	}
+	public static int lim_RegistSeller(String id) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt =conn.prepareStatement(SQL_REGIST_SELLER);
+			pstmt.setString(1,id);
+
+			resultRow = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultRow;
+	}
+
+	public static int lim_DeleteSeller(String id) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt =conn.prepareStatement(SQL_DELETE_SELLER);
+			pstmt.setString(1,id);
+
+			resultRow = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return resultRow;
+	}
 	
 	private static DTOMember setDTOMember(ResultSet rs) throws SQLException {
 		String id = rs.getString("ID").trim();
@@ -104,4 +156,5 @@ public class DAOMember {
 		DTOMember member = new DTOMember(id, pwd, name, hp, cardNum, address, selFlag);
 		return member;
 	}
+
 }
