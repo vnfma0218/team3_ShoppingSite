@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <script>
 
-let editor1;
+let editor;
 (async function () {
 	//editor = await	
-	ClassicEditor
+	editor = await ClassicEditor
 			.create( document.querySelector( '#editor' ), {
 				toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', "alignment",
 					   'blockQuote', 'insertTable', 'undo', 'redo' ],
@@ -23,15 +23,15 @@ let editor1;
 					options: [ 'left', 'right' ]
 				}
 			} )
-			.then( editor => {
+			/*.then( editor => {
 				console.log('editor')
 				//editor.setData('<p>aaa</p>')
 				editor1 = editor
-				/*editor.model.document.on('change:data', () => {
+				editor.model.document.on('change:data', () => {
 					console.log('data changed')
-				})*/
+				})
 				//$('style').append('.ck-content { min-height: ' + $('textarea[name="content"]').height() + 'px !important; }');
-			})
+			})*/
 			.catch( error => {
 			    console.error( error );
 			});
@@ -46,21 +46,36 @@ document.getElementById('dd').addEventListener('click', e => {
 })
 */
 
+const uploadeImageArr = [];
+
 function setThumbnail(event) {
-	for (var image of event.target.files) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			document.querySelector("div#image_container").appendChild(img);
-		};
+	  if(uploadeImageArr.length === 10) {
+	    alert('이미지는 10개만')
+	    return;
+	  }
+	  uploadeImageArr.push(event.target.files[0])
+		for (var image of event.target.files) {
+	    var reader = new FileReader();
+	    reader.addEventListener('load', event => {
+	      var img = document.createElement("img");
+	      img.setAttribute("src", event.target.result);
+	      console.log(document.getElementsByClassName('thumbnail')[uploadeImageArr.length - 1])
+	      document.getElementsByClassName('thumbnail')[uploadeImageArr.length - 1].appendChild(img);
+	    })
 		console.log(image);
 		reader.readAsDataURL(image);
 	}
 }
+	
+document.getElementById('uploadFile').addEventListener('change', setThumbnail)
 
-document.getElementById('file1').addEventListener('change', setThumbnail)
+const writeSale = document.getElementById('writeSale')
 
+writeSale.addEventListener('click', async e => {
+  console.log('click')
+})
+
+/*
 let dragingImage;
 
 document.addEventListener('dragstart', e => {
@@ -101,6 +116,8 @@ document.addEventListener('drop', e => {
   }
 
 })
+*/
+
 
 /*
 document.getElementById("fileUploadBtn").addEventListener('click', async e => {
