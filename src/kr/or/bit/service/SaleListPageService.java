@@ -21,7 +21,7 @@ public class SaleListPageService implements Action {
 		request.setAttribute("salePostList", salePostList);
 		
 		forward.setRedirect(false);
-		forward.setPath("SaleList.jsp");
+		forward.setPath("SaleListPage.jsp");
 		
 		return forward;
 	}

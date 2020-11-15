@@ -3,7 +3,7 @@
 <script>
 
 
-const pwdToggleBtn = document.getElementById('pwdToggleBtn')
+/* const pwdToggleBtn = document.getElementById('pwdToggleBtn')
 
 let changePwd = false;
 
@@ -11,10 +11,9 @@ pwdToggleBtn.addEventListener('click', e => {
   changePwd = !changePwd
   console.log(changePwd)
 })
-
-
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+ */
+let dropdown = document.getElementsByClassName("dropdown-btn");
+let i;
 
 for (i = 0; i < dropdown.length; i++) {
   dropdown[i].addEventListener("click", function() {
