@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 					<p>${salePost.saleTitle}</p>
 				</div>
 				<div class="product-price">
-					<p>${salePost.salPrice}ø¯</p>
+					<p>${salePost.salPrice}Ïõê</p>
 				</div>
 			</div>
 		</c:if> 
