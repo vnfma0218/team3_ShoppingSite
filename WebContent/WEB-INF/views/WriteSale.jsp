@@ -54,17 +54,25 @@
 	<!-- 
 	 <button id="dd">dd</button>	
 	 -->
+	제목<input type="text" id="titleInput">
+	카테고리<select name="categoryInput">
+		<option value="61">TOP</option>
+		<option value="62">PANTS</option>
+		<option value="63">OUTER</option>
+		<option value="64">ETC</option>
+	</select>
+	<button id="writeSale">작성</button>
 	<div class="editorContainer">
 		<div id="editor" class="_editor"></div>	
 	</div>
-	<input type="file" id="file1" name="filename1" multiple/>
+	<input type="file" id="uploadFile" name="filename1" multiple/>
 	<div class="image_container">
 		<div class="col-md-4 image_file">
 			<div class="thumbnail">
 				<div class="caption">
 					<p>메인 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+				<!--  <img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true"> -->
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -72,7 +80,6 @@
 				<div class="caption">
 					<p>2번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -80,7 +87,6 @@
 				<div class="caption">
 					<p>3번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -88,7 +94,6 @@
 				<div class="caption">
 					<p>4번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -96,7 +101,6 @@
 				<div class="caption">
 					<p>5번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -104,7 +108,6 @@
 				<div class="caption">
 					<p>6번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
@@ -112,7 +115,6 @@
 				<div class="caption">
 					<p>7번째 이미지</p>
 				</div>
-				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
 			</div>
 		</div>
 		<div class="col-md-4 image_file">
