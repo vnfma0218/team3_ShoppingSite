@@ -19,11 +19,15 @@ public class c_Salt {
     }
 
     private String readFile(String file) {
+    	System.out.println("readFile");
         String str = null;
         FileInputStream fis = null;
         BufferedInputStream bis = null;
-        String path = "C:" + File.separator + "Users" + File.separator +
-                "user" + File.separator + "key" + File.separator + file;
+//        String path = "C:" + File.separator + "Users" + File.separator +
+//                "user" + File.separator + "key" + File.separator + file;
+        String path = "C:" + File.separator + "jack" + File.separator +
+        		"bitcamp" + File.separator + "javaProject" + File.separator + "team3_ShoppingSite" + File.separator + file;
+        System.out.println("path: " + path);
         File f = new File(path);
         try {
             fis = new FileInputStream(f);
