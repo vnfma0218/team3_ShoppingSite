@@ -20,7 +20,8 @@
     <!-- 상품리스트 -->
 	
     <div class="item-list-container">
-        <div class="item">
+    	<a href="salePage.do">
+   		  <div class="item">
             <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
             <div class="store-title">
                 <p>세미브랜드</p>
@@ -34,7 +35,9 @@
             <div class="hit-number">
                 <p>400개 구매중</p>
             </div>
-        </div>
+       	 </div>
+    	</a>
+      
 
         <div class="item">
             <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
@@ -102,6 +105,6 @@
        
     
     </div>
-    <script src="/js/Main.js"></script>
+   <jsp:include page="../js/mainJs.jsp"></jsp:include>
 </body>
 </html>
