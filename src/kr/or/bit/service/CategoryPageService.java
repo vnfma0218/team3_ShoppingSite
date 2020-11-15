@@ -23,9 +23,9 @@ public class CategoryPageService implements Action {
 //		int categoryNum = 15;
 		//List<DTOSalePost> salePostList = DAOSalePost.getSalePostListByCategory(categoryNum);
 		
-//		private int saleNum;
-//		private int selNum;
-//		private int categoryNum;
+//		private int saleNum; &
+//		private int selNum; 
+//		private int categoryNum; &
 //		private String saleTitle;
 //		private String saleContent;
 //		private Date saleCreatedAt;
@@ -43,11 +43,11 @@ public class CategoryPageService implements Action {
 		pNums.add(3);
 		
 		List<DTOSalePost> salePostList = new ArrayList<DTOSalePost>();
-		DTOSalePost samplePost1 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs);
+		DTOSalePost samplePost1 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs,20000);
 		samplePost1.setpNums(pNums);
-		DTOSalePost samplePost2 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs);
+		DTOSalePost samplePost2 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs,30000);
 		samplePost2.setpNums(pNums);
-		DTOSalePost samplePost3 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs);
+		DTOSalePost samplePost3 = new DTOSalePost(91010, 100, categoryNum, "너무 이쁜 셔츠", "너무 이쁜 셔츠 내용", new Date(), imageAddrs,40000);
 		samplePost3.setpNums(pNums);
 		
 		salePostList.add(samplePost1);
@@ -60,6 +60,7 @@ public class CategoryPageService implements Action {
 		salePostList.add(samplePost2);
 		salePostList.add(samplePost3);
 		
+		//product 뒤져서 가격 하나 가져와야함 
 		
 		
 		

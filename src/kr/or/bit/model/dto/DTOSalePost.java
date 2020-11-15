@@ -13,6 +13,7 @@ public class DTOSalePost {
 	private Date saleCreatedAt;
 	private List<String> imageAddrs;
 	private List<Integer> pNums;
+	private int salPrice;
 	
 	public DTOSalePost() {}
 	
@@ -34,7 +35,7 @@ public class DTOSalePost {
 		this.saleCreatedAt = saleCreatedAt;
 	}
 	
-	public DTOSalePost(int saleNum, int selNum, int categoryNum, String saleTitle, String saleContent, Date saleCreatedAt, List<String> imageAddrs) {
+	public DTOSalePost(int saleNum, int selNum, int categoryNum, String saleTitle, String saleContent, Date saleCreatedAt, List<String> imageAddrs, int salPrice) {
 		this.saleNum = saleNum;
 		this.selNum = selNum;
 		this.categoryNum = categoryNum;
@@ -42,6 +43,7 @@ public class DTOSalePost {
 		this.saleContent = saleContent;
 		this.saleCreatedAt = saleCreatedAt;
 		this.imageAddrs = imageAddrs;
+		this.salPrice = salPrice;
 	}
 
 	public int getSaleNum() {
@@ -106,6 +108,14 @@ public class DTOSalePost {
 
 	public void setpNums(List<Integer> pNums) {
 		this.pNums = pNums;
+	}
+
+	public int getSalPrice() {
+		return salPrice;
+	}
+
+	public void setSalPrice(int salPrice) {
+		this.salPrice = salPrice;
 	}
 	
 }
