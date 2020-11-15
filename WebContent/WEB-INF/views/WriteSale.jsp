@@ -5,45 +5,162 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+<style>
+	.editContent {
+		width: 80%;
+		margin: 0 auto;
+	}
+	
+	.ck-content {
+		height: 500px;
+		overflow: scroll;
+	}
+	/*.editorContainer{
+		width: 50%;
+	}*/
+	table{
+		width: 100%;
+	}
+	
+	.image_container {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+	}
+	
+	.image_file{
+		width: 100%;
+		height: 100%;
+	}
+	
+	@media screen and (max-width: 768px) {
+		.image_container {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(5, 1fr);
+		}
+	}
+	
+</style>
 </head>
 <body>
+<jsp:include page="./common/Top.jsp"></jsp:include>
+<div class="editContent">
+	<!-- 
+	 <button id="dd">dd</button>	
+	 -->
+	<div class="editorContainer">
+		<div id="editor" class="_editor"></div>	
+	</div>
+	<input type="file" id="file1" name="filename1" multiple/>
+	<div class="image_container">
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>메인 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>2번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>3번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>4번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>5번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>6번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>7번째 이미지</p>
+				</div>
+				<img class="uploadImage" src="../images/400.jpg" style="width:100%" draggable="true">
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>8번째 이미지</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>9번째 이미지</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-4 image_file">
+			<div class="thumbnail">
+				<div class="caption">
+					<p>10번째 이미지</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- 
+	</div>
+	 -->
 
-		write: <input type="text" id="name" name="name"><br>
-		title: <input type="text" name="title"><br>
-			   <input type="hidden" name="hid" value="hello"><br>
-		file1 : <input type="file" id="file1" name="filename1"><br>	   
-		file2 : <input type="file" name="filename2"><br>
-				<textarea rows="10" cols="10" name="content"></textarea>
-				<input type="button" id="fileUploadBtn" value="파일 업로드">
-
+	<!-- 
+		<table border="1">
+			<tr>
+				<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		</table>
+	 -->
+</div>
 </body>
-<script>
-document.getElementById("fileUploadBtn").addEventListener('click', async e => {
-	console.log('click');
-	const name = document.getElementById("name");
-	//const inputs = document.getElementById("file1");
-	const inputs = document.querySelectorAll('input[type="file"]');
-	//const inputs = document.querySelector('#file1');
-	const data = new FormData();
-	console.log(inputs[0].files[0].name)
-	console.log(inputs[1].files[0].name)
-	data.append('file', inputs[0].files[0], inputs[0].files[0].name);
-	data.append('file', inputs[1].files[0], inputs[1].files[0].name);
-	data.append('categoryNum', 1234)
-	data.append('title', "title value")
-	data.append('content', "content values")
-	data.append('pNums', [1,2,3])
-	const response = await fetch('writeSale.ajax', {
-		method: 'post',
-		headers: {
-		      //'Content-Type': 'multipart/form-data'
-		    },
-		body: data
-	});
-	const text = await response.text();
-	console.log(text)
-	console.log(response.status)
-});
-
-</script>
+<jsp:include page="../js/writeSaleJs.jsp"></jsp:include>
 </html>
