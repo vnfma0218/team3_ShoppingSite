@@ -23,7 +23,7 @@ public class ProductAddPageService implements Action{
 		request.setAttribute("seller", seller);
 		
 		forward.setRedirect(false);
-		forward.setPath("ProductAddPage.jsp");
+		forward.setPath("ProductAdd.jsp");
 		
 		return forward;
 	}

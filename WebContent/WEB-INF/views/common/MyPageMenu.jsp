@@ -31,7 +31,7 @@
         <div class="dropdown-container">
           <a href="registSellerPage.do">판매자 등록</a>
           <a href="/team3_ShoppingSite/seller/productList.do">상품관리</a>
-          <a href="#">판매글관리</a>
+          <a href="/team3_ShoppingSite/seller/writeSalePage.do">판매글관리</a>
         </div>
        
     </div>
