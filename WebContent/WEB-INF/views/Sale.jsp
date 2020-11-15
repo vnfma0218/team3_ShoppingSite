@@ -224,7 +224,9 @@
                     내가 쓴 글보기
                 </div>
                 <div class="write" data-toggle="collapse" data-target="#demo">
-                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">문의하기</button>
+                <a href="member/writeInquPage.do">
+                	 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">문의하기</button>
+                </a>
                 </div>
                
             </div>

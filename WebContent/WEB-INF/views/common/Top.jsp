@@ -3,7 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/Top.css">
+</head>
 <body>
  <jsp:include page="../../js/mainJs.jsp"></jsp:include>
 <!-- 배너 -->
@@ -55,10 +60,10 @@
 	    <ul class="category-menu">
 	        <li class="category-menu-item">홈</li>
 	        
-	        <li class="category-menu-item">상의</li>
+	        <li class="member/">상의</li>
 	        <li class="category-menu-item">하의</li>
 	        <li class="category-menu-item">아우터</li>
-	        <li class="category-menu-item">ACC</li>
+	        <li class="category-menu-item">ETC</li>
 	        <li class="category-menu-item">
 	            <a href="member/cart.do">장바구니</a></li>
 	        <li class="category-menu-item">

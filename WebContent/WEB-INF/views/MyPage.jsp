@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/MyPage.css">
 </head>
 <body>
+<jsp:include page="./common/Top.jsp"></jsp:include>
     <div class="main-title">
         <h1>마이페이지</h1>
     </div>
@@ -20,7 +21,7 @@
 <!-- 사이드메뉴 -->
     <div class="sidenav">
         <a href="#about">회원정보</a>
-        <a href="#services">문의글 관리</a>
+        <a href="member/InqPostListPage.do">문의글 관리</a>
         <a href="member/purchasedPage.do">구매내역</a>
         <a href="#contact">회원탈퇴</a>
         <button class="dropdown-btn">판매자메뉴 
