@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 index
 <input type="button" id="sendAjax" value="send ajax">
-<a href="mainPage.do">¸ŞÀÎÆäÀÌÁö</a>
+<a href="mainPage.do">ë©”ì¸í˜ì´ì§€</a>
 </body>
 <script>
 document.getElementById('sendAjax').addEventListener('click', async e => {
 	console.log('click')
 	const jsonData = { id: 'jack', pwd: '1234' }
 //	const jsonData = { products: [{id: 'jack'}, {id: 'jack2'}] }
-//	const jsonData = [{pNum:2, pName:'ÇÏ¾ç¸ğÀÚ', pAmount: 3, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address1'},
-//						{pNum:3, pName:'°ËÀº¼ÅÃ÷', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'¸ğÀÚ, ¼ÅÃ÷, ¹ÙÁö ÆË´Ï´Ù.', imageAddr:'test address2'}]
+//	const jsonData = [{pNum:2, pName:'í•˜ì–‘ëª¨ì', pAmount: 3, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'ëª¨ì, ì…”ì¸ , ë°”ì§€ íŒë‹ˆë‹¤.', imageAddr:'test address1'},
+//						{pNum:3, pName:'ê²€ì€ì…”ì¸ ', pAmount: 2, pPrice:50000, pSize:'F', saleNum:100, saleTitle:'ëª¨ì, ì…”ì¸ , ë°”ì§€ íŒë‹ˆë‹¤.', imageAddr:'test address2'}]
 	const data = JSON.stringify(jsonData);
 //	const data = 'id=jack';
 	const res = await fetch('seller/writeSale.ajax', {
