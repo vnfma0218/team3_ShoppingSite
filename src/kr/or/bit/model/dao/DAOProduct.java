@@ -22,6 +22,8 @@ public class DAOProduct {
 	private static final String SQL_UPDATE_PRODUCT_P_AMOUNT = "UPDATE PRODUCT "
 															+ "SET P_AMOUNT = P_AMOUNT - ? WHERE P_NUM = ?";
 	private static final String SQL_SELECT_PRODUCTS_BY_SEL_NUM = "SELECT * FROM PRODUCT WHERE SEL_NUM =?";
+	private static final String SQL_INSERT_PRODUCT = "INSERT INTO PRODUCT(SEL_NUM, P_NAME, P_PRICE, P_SIZE, P_AMOUNT, P_DESCRIPTION) "
+													+ "VALUES(?, ?, ?, ?, ?, ?)";
 
 /*
 //	private static final String SQL_SELECT_PRODUCTS_BY_PNUM = "SELECT * FROM PRODUCT WHERE P_NUM = ?";
@@ -128,6 +130,31 @@ public class DAOProduct {
 		}
 		
 		return productList;
+	}
+	
+	public static int ryu_insertProduct(DTOProduct product) {
+		int resultRow = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = instance.getConnection();
+			pstmt = conn.prepareStatement(SQL_INSERT_PRODUCT);
+			pstmt.setInt(1, product.getSelNum());
+			pstmt.setString(2, product.getpName());
+			pstmt.setInt(3, product.getpPrice());
+			pstmt.setString(4, product.getpSize());
+			pstmt.setInt(5, product.getpAmount());
+			pstmt.setString(6, product.getpDescription());
+			
+			resultRow = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance.freeConnection(conn, pstmt);
+		}
+		
+		return resultRow;
 	}
 	
 	private static DTOProduct setDTOProduct(ResultSet rs) throws SQLException {
