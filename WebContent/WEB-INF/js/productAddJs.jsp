@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <script>
 
+
+function inNumber(){
+  if(event.keyCode<48 || event.keyCode>57){
+     event.returnValue=false;
+  }
+}
+
 const addProductBtn = document.getElementById("addProductBtn")
 addProductBtn.addEventListener('click', async e=>{
   const pNameInput = document.getElementById("pNameInput")
@@ -18,7 +25,6 @@ addProductBtn.addEventListener('click', async e=>{
     pAmount: pAmountInput.value,
     pDesc: pDescInput.value
   }
-  console.log(json)
   const data = JSON.stringify(json)
   const response = await fetch("/team3_ShoppingSite/seller/productAdd.ajax", {
     method: "POST",
