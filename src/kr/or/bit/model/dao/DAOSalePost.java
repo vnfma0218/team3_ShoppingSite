@@ -133,6 +133,7 @@ public class DAOSalePost {
 			pstmt = conn.prepareStatement(ryu_SQL_SELECT_LAST_ROW_FROM_SALE_POST_BY_SEL_NUM);
 			pstmt.setInt(1, salePost.getSelNum());
 			rs = pstmt.executeQuery();
+			rs.next();
 			int saleNum = rs.getInt("SALE_NUM");
 			
 			List<Integer> pNums = salePost.getpNums();
