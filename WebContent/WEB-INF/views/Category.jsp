@@ -19,7 +19,7 @@
 	<c:forEach var="salePost" items="${ salePostList }" varStatus="index">
 		<c:if test="${salePost != null}">
 			 <div class="item">
-				<img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
+				<img src="/team3_ShoppingSite${ salePost.imageAddrs[0] }" alt="">
 				<div class="Product-saleTitle">
 					<p>${salePost.saleTitle}</p>
 				</div>
