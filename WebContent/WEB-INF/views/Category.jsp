@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/Main.css">
+    <link rel="stylesheet" href="/team3_ShoppingSite/css/Main.css">
 </head>
 <body>
 <jsp:include page="./common/Top.jsp"></jsp:include>
-<button id="btn">aaaaaaa</button>
+<!-- <button id="btn">aaaaaaa</button> -->
 <div id="categoryContent" class="item-list-container">
 
 	<c:set var="salePostList" value='<%= request.getAttribute("salePostList") %>'/>

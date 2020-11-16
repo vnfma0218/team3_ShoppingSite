@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/Main.css">
+    <link rel="stylesheet" href="/team3_ShoppingSite/css/Main.css">
 </head>
 <body>
 <jsp:include page="./common/Top.jsp"></jsp:include>
@@ -22,7 +22,7 @@
     <div class="item-list-container">
     	<a href="salePage.do">
    		  <div class="item">
-            <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
+            <img src="/team3_ShoppingSite/images/19309420_1598777941_image1_M.jpg" alt="">
             <div class="store-title">
                 <p>세미브랜드</p>
             </div>
