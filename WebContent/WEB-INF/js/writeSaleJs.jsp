@@ -72,13 +72,6 @@ writeSale.addEventListener('click', async e => {
   const content = editor.getData()
   const categoryNum = categoryInput.options[categoryInput.selectedIndex].value
   
-  // {
-  //   title:string,
-  //   content:string,
-  //   categoryNum:num,
-  //   image:file
-  //   pNums:[num]
-  //   }
   const data = new FormData();
   data.append('title', title)
   data.append('content', content)
@@ -88,16 +81,24 @@ writeSale.addEventListener('click', async e => {
     data.append(uploadeImageArr[i].name, uploadeImageArr[i]);
   }
 
-  const response = await fetch('/team3_ShoppingSite/seller/writeSale.ajax', {
+  const res = await fetch('/team3_ShoppingSite/seller/writeSale.ajax', {
 		method: 'post',
-		headers: {
-		      //'Content-Type': 'multipart/form-data'
-		    },
 		body: data
 	});
-	const text = await response.text();
-	console.log(text)
-	console.log(response.status)
+	const status = res.status
+  if(status === 200){
+    const result = await res.text()
+    if(result ==='success'){
+      alert('판매글 등록 완료')
+      location.href = '/team3_ShoppingSite/member/myPage.do'
+    } else {
+      alert('판매글 등록 실패. 정보를 올바르게 입력했는지 다시 확인하세요.')
+    }
+  } else if(status == 404){
+    alert('해당 요청을 찾을 수 없습니다.')
+  } else {
+    alert('서버 에러: 관리자에게 문의하십시오.')
+  }
 })
 
 /*
