@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/ProductList.css">
+<link rel="stylesheet" href="/team3_ShoppingSite/css/ProductList.css">
 </head>
 <body>
 <div class="top_container">
@@ -56,7 +56,6 @@
 					</c:forEach>
 	            </table>
 	        </div>
-   
 	</div>
 </div>
 </body>

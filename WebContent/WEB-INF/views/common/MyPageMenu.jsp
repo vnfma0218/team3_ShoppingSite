@@ -32,7 +32,7 @@
 	            </c:when>
 	            <c:otherwise>
 					<a href="/team3_ShoppingSite/seller/productList.do">상품관리</a>
-					<a href="/team3_ShoppingSite/seller/writeSalePage.do">판매글관리</a>
+					<a href="/team3_ShoppingSite/seller/saleListPage.do">판매글관리</a>
 	            </c:otherwise>
 	        </c:choose>
 		</div>

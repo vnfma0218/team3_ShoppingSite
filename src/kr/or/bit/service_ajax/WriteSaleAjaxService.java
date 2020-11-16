@@ -51,7 +51,7 @@ public class WriteSaleAjaxService implements ActionAjax {
 			while(fileNames.hasMoreElements()) {
 				String file = fileNames.nextElement();
 				String fileSysName = multiReq.getFilesystemName(file);
-				imageAddrs.add(path + "/" + fileSysName);
+				imageAddrs.add("/upload/" + fileSysName);
 			}
 			
 			DTOSalePost salePost = new DTOSalePost(selNum, categoryNum, saleTitle, saleContent, pNums, imageAddrs);
