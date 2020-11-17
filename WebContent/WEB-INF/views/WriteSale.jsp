@@ -60,10 +60,10 @@
 	</div>
 	<div>
 		카테고리<select id="categoryInput">
-			<option value="61">TOP</option>
-			<option value="62">PANTS</option>
-			<option value="63">OUTER</option>
-			<option value="64">ETC</option>
+			<option value="30">TOP</option>
+			<option value="31">PANTS</option>
+			<option value="32">OUTER</option>
+			<option value="33">ETC</option>
 		</select>
 	</div>
 	<c:set var="productList" value='<%= request.getAttribute("productList") %>'/>
