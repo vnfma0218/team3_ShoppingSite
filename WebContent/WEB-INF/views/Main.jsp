@@ -14,7 +14,7 @@
 
     <!-- 메인페이지 타이틀 -->
     <div class="main-title">
-        <h1>당신을 위한 추천</h1>
+        <h1>최신 제품</h1>
     </div>
 
     <!-- 상품리스트 -->
@@ -38,8 +38,22 @@
        	 </div>
     	</a>
       
+		<c:set var="salePostList" value='<%= request.getAttribute("salePostList") %>'/>
+		<c:forEach var="salePost" items="${ salePostList }" varStatus="index">
+			<c:if test="${salePost != null}">
+				 <div class="item">
+					<img src="/team3_ShoppingSite${ salePost.imageAddrs[0] }" alt="">
+					<div class="Product-saleTitle">
+						<p>${salePost.saleTitle}</p>
+					</div>
+					<div class="product-price">
+						<p>${salePost.salPrice}원</p>
+					</div>
+				</div>
+			</c:if> 
+		</c:forEach>
 
-        <div class="item">
+        <%-- <div class="item">
             <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
             <div class="store-title">
                 <p>세미브랜드</p>
@@ -53,57 +67,7 @@
             <div class="hit-number">
                 <p>400개 구매중</p>
             </div>
-        </div>
-
-        <div class="item">
-            <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
-            <div class="store-title">
-                <p>세미브랜드</p>
-            </div>
-            <div class="product-description">
-                <p>세련끝판왕 슬렉스..</p>
-            </div>
-            <div class="product-price">
-                <p>13,900</p>
-            </div>
-            <div class="hit-number">
-                <p>400개 구매중</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
-            <div class="store-title">
-                <p>세미브랜드</p>
-            </div>
-            <div class="product-description">
-                <p>세련끝판왕 슬렉스..</p>
-            </div>
-            <div class="product-price">
-                <p>13,900</p>
-            </div>
-            <div class="hit-number">
-                <p>400개 구매중</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="<%=request.getContextPath() %>/images/19309420_1598777941_image1_M.jpg" alt="">
-            <div class="store-title">
-                <p>세미브랜드</p>
-            </div>
-            <div class="product-description">
-                <p>세련끝판왕 슬렉스..</p>
-            </div>
-            <div class="product-price">
-                <p>13,900</p>
-            </div>
-            <div class="hit-number">
-                <p>400개 구매중</p>
-            </div>
-        </div>
-       
-    
+        </div> --%>
     </div>
    <jsp:include page="../js/mainJs.jsp"></jsp:include>
 </body>
