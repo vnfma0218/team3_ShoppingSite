@@ -11,20 +11,29 @@ a {
 
 .sideBar_container{
 	flex-grow: 2;
+	
 }
 
 .productList_container{
 	flex-grow: 8;
+	margin-left: 0;
 }
 
 
 
 .productList_title {
   text-align: center;
+  margin-bottom: 100px;
+      margin-right: 100px;
 }
 
-.pd_info_container {
+.pd_info_table {
+
+    width: 90%;
+    margin: 0 auto;
+    margin-left: 0;
 }
+
 .pd_info_title h2 {
   margin-left: 77px;
 }

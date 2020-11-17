@@ -10,12 +10,8 @@
     
 </head>
 <body>
-<!-- id: string,
-pwd: string,
-name: string,
-hp: string,
-address,
-cardNum: string -->
+
+<jsp:include page="./common/Top.jsp"></jsp:include>
 <form action="signUp.do" style="border:1px solid #ccc" method="POST">
 	<div class="container">
 		<h1>회원가입</h1>

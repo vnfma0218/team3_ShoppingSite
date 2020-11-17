@@ -29,12 +29,12 @@
      	
 </head>
  <body class="text-center">
-
-  <form class="form-signin">
+<jsp:include page="./common/Top.jsp"></jsp:include>
+  <form class="form-signin" style="width: 30%; margin: 0 auto;">
   <a href="/team3_ShoppingSite/mainPage.do">
-	  <img class="mb-4" src="<%=request.getContextPath() %>/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+	  <img src="/team3_ShoppingSite/images/logo@3x.png" style="width: 150px; margin-bottom: 50px;">
   </a>
-  <h1 class="h3 mb-3 font-weight-normal">환영합니다.</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Welcom</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="아이디" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>

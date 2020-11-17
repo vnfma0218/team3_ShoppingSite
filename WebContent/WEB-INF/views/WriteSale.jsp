@@ -9,6 +9,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
 <style>
+
+	input[type=text], input[type=password], select {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #ddd;
+    }
+    
+    .productList label{
+    	font-size: large;
+    	padding: 10px;
+    }
+    
+    .productList input{
+    	margin: 10px;
+    }
 	.editContent {
 		width: 80%;
 		margin: 0 auto;
@@ -33,9 +51,23 @@
 		grid-template-rows: repeat(2, 1fr);
 	}
 	
+	image_container img{
+		height: 254px;
+	}
+	
 	.image_file{
 		width: 100%;
 		height: 100%;
+	}
+	.productList{
+		margin-bottom: 50px;
+	}
+	
+	.productList h4{
+		font-weight: bold;
+	}
+	.editorContainer{
+		margin-top: 10px;
 	}
 	
 	@media screen and (max-width: 768px) {
@@ -52,23 +84,23 @@
 <body>
 <jsp:include page="./common/Top.jsp"></jsp:include>
 <div class="editContent">
-	<!-- 
-	 <button id="dd">dd</button>	
-	 -->
-	<div>
-		제목<input type="text" id="titleInput">
-	</div>
-	<div>
-		카테고리<select id="categoryInput">
-			<option value="30">TOP</option>
+	 <h1>판매글등록</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <div><label for="pNameInput"><b>제목</b></label></div>
+    <input type="text" id="titleInput">
+ 	<div><label for="categoryInput"><b>카테고리</b></label></div>
+           <select id="categoryInput">
+            <option value="30">TOP</option>
 			<option value="31">PANTS</option>
 			<option value="32">OUTER</option>
 			<option value="33">ETC</option>
-		</select>
-	</div>
+           </select>
+           
 	<c:set var="productList" value='<%= request.getAttribute("productList") %>'/>
-	<div>
-		판매할 상품
+	<div class="productList">
+		<div><h4>판매할 상품</h4></div>
 		<c:forEach var="product" items="${ productList }" varStatus="index">
 		<c:if test="${product != null}">
 			<label>
@@ -78,7 +110,7 @@
 	</c:forEach>
 	</div>
 	
-	<button id="writeSale">작성</button>
+	<button id="writeSale" type="button" class="btn btn-info">작성완료</button>
 	<div class="editorContainer">
 		<div id="editor" class="_editor"></div>	
 	</div>
