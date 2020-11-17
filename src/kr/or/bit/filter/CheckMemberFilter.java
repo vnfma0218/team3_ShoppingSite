@@ -30,10 +30,10 @@ public class CheckMemberFilter implements Filter {
 		HttpServletResponse httpRes = (HttpServletResponse)response;
 		HttpSession session = httpReq.getSession();
 		
-//		if(session.getAttribute("memberId") == null) { // 로그인 안됀 상태
-//			httpRes.sendError(401);
-//			return;
-//		}
+		if(session.getAttribute("memberId") == null) { // 로그인 안됀 상태
+			httpRes.sendError(401);
+			return;
+		}
 		
 		chain.doFilter(request, response);
 	}

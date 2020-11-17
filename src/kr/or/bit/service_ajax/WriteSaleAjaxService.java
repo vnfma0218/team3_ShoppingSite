@@ -35,7 +35,7 @@ public class WriteSaleAjaxService implements ActionAjax {
 		int size = 1024*1024*10;
 		try {
 			MultipartRequest multiReq = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
-			int selNum = Integer.parseInt((String)request.getSession().getAttribute("sellerNum"));
+			int selNum = (Integer)request.getSession().getAttribute("sellerNum");
 			int categoryNum = Integer.parseInt(multiReq.getParameter("categoryNum"));
 			String saleTitle = multiReq.getParameter("title");
 			String saleContent = multiReq.getParameter("content");
@@ -51,12 +51,12 @@ public class WriteSaleAjaxService implements ActionAjax {
 			while(fileNames.hasMoreElements()) {
 				String file = fileNames.nextElement();
 				String fileSysName = multiReq.getFilesystemName(file);
-				imageAddrs.add(path + "/" + fileSysName);
+				imageAddrs.add("/upload/" + fileSysName);
 			}
 			
 			DTOSalePost salePost = new DTOSalePost(selNum, categoryNum, saleTitle, saleContent, pNums, imageAddrs);
 			int resultRow = DAOSalePost.ryu_insertSalePostAndAll(salePost);
-			if(resultRow == 1) {
+			if(resultRow > 0) {
 				ajaxData.setData("success");				
 			} else {
 				ajaxData.setData("fail");				

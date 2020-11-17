@@ -16,28 +16,29 @@
 <body>
   
 <!-- 사이드메뉴 -->
-    <div class="sidenav">
-        <a href="#about">회원정보</a>
-        <br>
-        <a href="InqPostListPage.do">문의글 관리</a>
-        <br>
-        <a href="#clients">구매내역</a>
-        <br>
-        <a href="#contact">회원탈퇴</a>
-        <br>
-        <button class="dropdown-btn">판매자메뉴 
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="registSellerPage.do">판매자 등록</a>
-          <a href="/team3_ShoppingSite/seller/productList.do">상품관리</a>
-          <a href="/team3_ShoppingSite/seller/writeSalePage.do">판매글관리</a>
-        </div>
-       
-    </div>
+	<div class="sidenav">
+		<a href="#about">회원정보</a><br>
+		<a href="InqPostListPage.do">문의글 관리</a><br>
+		<a href="#clients">구매내역</a><br>
+		<a href="#contact">회원탈퇴</a><br>
+		<button class="dropdown-btn">판매자메뉴 
+			<i class="fa fa-caret-down"></i>
+		</button>
+		<c:set var="sellerNum" value='<%= session.getAttribute("sellerNum") %>'/>
+		<div class="dropdown-container">
+			<c:choose>
+	       		<c:when test="${ sellerNum == null }">
+					<a href="/team3_ShoppingSite/member/registSellerPage.do">판매자 등록</a>
+	            </c:when>
+	            <c:otherwise>
+					<a href="/team3_ShoppingSite/seller/productList.do">상품관리</a>
+					<a href="/team3_ShoppingSite/seller/saleListPage.do">판매글관리</a>
+	            </c:otherwise>
+	        </c:choose>
+		</div>
+	</div>
     
     
-<jsp:include page="../../js/myPageJs.jsp"></jsp:include>
 </body>
-
+<jsp:include page="../../js/myPageJs.jsp"></jsp:include>
 </html>

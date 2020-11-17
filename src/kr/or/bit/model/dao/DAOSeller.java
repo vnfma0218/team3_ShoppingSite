@@ -14,7 +14,7 @@ public class DAOSeller {
 
     private static final String SQL_SELECT_SELLER_BY_ID = "SELECT * FROM SELLER WHERE ID = ?";
     private static final String SQL_SELECT_SELLER_BY_SEL_NUM = "SELECT * FROM SELLER WHERE SEL_NUM = ?";
-    private static final String SQL_REGIST_SELLER ="INSERT INTO SELLER (ID ,SEL_EMAIL,SEL_REGIST_NUM,SEL_ACCOUNT) VALUES (?,?,?,?)";
+    private static final String SQL_REGIST_SELLER ="INSERT INTO SELLER (ID, SEL_EMAIL, SEL_REGIST_NUM, SEL_ACCOUNT) VALUES (?, ?, ?, ?)";
 
     public static DTOSeller ryu_getSellerById(String id) {
         DTOSeller seller = null;
@@ -75,6 +75,7 @@ public class DAOSeller {
            pstmt.setString(2,dtoSeller.getSelEmail());
            pstmt.setInt(3,dtoSeller.getSelRegistNum());
            pstmt.setString(4,dtoSeller.getSelAccount());
+           
            resultRow = pstmt.executeUpdate();
        } catch (SQLException e) {
            e.printStackTrace();
