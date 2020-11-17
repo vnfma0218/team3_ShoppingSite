@@ -52,10 +52,10 @@
     <ul class="category-menu">
         <li class="category-menu-item"><a href ="/team3_ShoppingSite/mainPage.do">HOME</a></li>
         
-        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=61">TOP</a></li>
-        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=62">PANTS</a></li>
-        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=63">OUTER</a></li>
-        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=64">ETC</a></li>
+        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=30">TOP</a></li>
+        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=31">PANTS</a></li>
+        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=32">OUTER</a></li>
+        <li class="category-menu-item"><a href ="/team3_ShoppingSite/category.do?categoryNum=33">ETC</a></li>
         <li class="category-menu-item"><a href="/team3_ShoppingSite/member/cart.do">CART</a></li>
         <li class="category-menu-item"><a href ="/team3_ShoppingSite/member/myPage.do">MYPAGE</a></li>
         <li class="category-menu-item">
