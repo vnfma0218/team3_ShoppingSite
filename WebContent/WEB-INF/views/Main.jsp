@@ -41,15 +41,17 @@
 		<c:set var="salePostList" value='<%= request.getAttribute("salePostList") %>'/>
 		<c:forEach var="salePost" items="${ salePostList }" varStatus="index">
 			<c:if test="${salePost != null}">
-				 <div class="item">
-					<img src="/team3_ShoppingSite${ salePost.imageAddrs[0] }" alt="">
-					<div class="Product-saleTitle">
-						<p>${salePost.saleTitle}</p>
+				<a href="/team3_ShoppingSite/salePage.do?saleNum=${ salePost.saleNum }">
+					 <div class="item">
+						<img src="/team3_ShoppingSite${ salePost.imageAddrs[0] }" alt="">
+						<div class="Product-saleTitle">
+							<p>${salePost.saleTitle}</p>
+						</div>
+						<div class="product-price">
+							<p>${salePost.salPrice}원</p>
+						</div>
 					</div>
-					<div class="product-price">
-						<p>${salePost.salPrice}원</p>
-					</div>
-				</div>
+				</a>
 			</c:if> 
 		</c:forEach>
 
