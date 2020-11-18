@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/team3_ShoppingSite/css/Main.css">
 </head>
 <body>
+
 <jsp:include page="./common/Top.jsp"></jsp:include>
 
     <!-- 메인페이지 타이틀 -->

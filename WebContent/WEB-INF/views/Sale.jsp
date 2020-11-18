@@ -46,9 +46,11 @@
             </div>
             <div class="goods-options-container">
                 <select name="colorSelect" id="">
-                    <option>컬러를 선택하세요</option>
-                    <option value="브라운">브라운</option>
-                    <option value="블랙">블랙</option>
+                    <option>사이즈를 선택하세요.</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="FREE">FREE</option>
                 </select>
             </div>
             <div class="price-total-container">
@@ -59,22 +61,33 @@
                     <p>0원</p>
                 </div>
             </div>
+            
+            
+            <!-- 
+   
+                <div class="write" data-toggle="collapse" data-target="#demo">
+                <a href="member/writeInquPage.do">
+                	 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">문의하기</button>
+                </a>
+                </div>
+          
+             -->
+            
             <div class="btn-purchase-container">
                 <ul class="btn-purchase-items">
                     <a href="member/purchasePage.do"><li class="btn-purchase-1">
                         <button>바로구매</button>
                     </li></a>
-                    <a href=""><li class="btn-purchase-2">
-                        <button>NPay구매</button>
+                    <a href="member/cart.do"><li class="btn-purchase-1">
+                        <button>장바구니</button>
                     </li></a>
-                    <a href=""><li class="btn-purchase-3">
-                        <i class="fas fa-shopping-cart fa-2x"></i>
-                    </li></a>
-                    <a href=""><li class="btn-purchase-4">
-                        <i class="far fa-heart fa-2x"></i>
+                     <a href="member/writeInquPage.do"><li class="btn-purchase-1">
+                        <button>문의하기</button>
                     </li></a>
                 </ul>
             </div>
+            
+            
         </div>
     </div>
     
@@ -123,20 +136,41 @@
     </div>
 
     <!-- review -->
-    <div class="review-container">
-
+    <form>
+ <!--    <div id="review" class="review-container">
         <div class="tab-review">
-            리뷰(8)
+            리뷰
         </div>
+        
         <div class="score-review">
             <div class="score-letter">
-                <p>만족도</p>
+               <input type ="text" id ="reviewInput" >
+               <ul class="btn-reivew-items">
+                    <a href="member/purchasePage.do">
+                    <li class="btn-reivew-1">
+                        <button id="reviewbtn" name="reviewbtn">리뷰등록</button>
+                    </li>
             </div>
-            <div class="score-star">
-                <p>❤❤❤❤❤ 5/5</p>
+     
+        </div> -->
+        <div id="reivew" class="review-container">
+            <div class="tab-review">
+                <h3 id ="reivew-img"><img src="/team3_ShoppingSite/images/리뷰아이콘.png" width="50">&nbsp;REVIEW</h3>
             </div>
-        </div>
-    
+            <div class="score-review">
+                <div class="score-letter">
+                    <table>
+                    <tr>
+                       <td><input type ="texdtarea" id ="reviewInput" placeholder ="리뷰를 등록해주세요."></td>
+                       <td><button id="reviewbtn">등록</button></td>
+                    </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+
+        </form>
+    <div id="reivew" class="review-container">
         <div class="review-content-contaier">
             
             <div class="user-score-id">
@@ -178,9 +212,7 @@
         <div class="user-review">
             <p>사진보다 예뻐용 부드럽고 좋습니다.</p>
         </div>
-
         <div class="review-content-contaier">
-            
             <div class="user-score-id">
                 <div class="user-score">
                     ❤❤❤❤❤
@@ -188,18 +220,16 @@
                 <div class="user-id">
                     pg5425
                 </div>
-    
             </div>
-    
             <div class="write--time">
                 2020.11.17
             </div>
-    
         </div>
         <div class="user-review">
             <p>사진보다 예뻐용 부드럽고 좋습니다.</p>
         </div>
-    </div>
+</div>
+
 
     <!-- review paging -->
     <div class="review-page-container">
@@ -211,110 +241,80 @@
         <a href="#">5</a>
         <a href="#">></a>
     </div>
-
-    <!-- Q&A -->
-
-    <div class="qna-container">
-        <div class="tab-qna">
-            <div class="tab-qna-title">
-                Q&A(7)
-            </div>
-            <div class="tab-qna-right">
-                <div class="user-write">
-                    내가 쓴 글보기
-                </div>
-                <div class="write" data-toggle="collapse" data-target="#demo">
-                <a href="member/writeInquPage.do">
-                	 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">문의하기</button>
-                </a>
-                </div>
-               
-            </div>
+    
+    
+    <!-- 판매자 정보 -->
+    <div id="review" class="Info-container">
+        <div class="tab-info">
+            주문정보
         </div>
-    </div>
-
-    <div class="collapse" id="demo">
-
-        <div class="qna-write-container">
-            <form action="#">
-                <div class="qna-write-title">
-                    <h3>제목</h3>
-                    <input type="text" name="qna-write-title">
-                </div>
-                <div class="qna-write-content">
-                    <h3>내용</h3>
-                    <textarea name="content" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="qna-write-private">
-                    <h3>공개여부</h3>
-                    <div class="chk-private">
-                        <input type="checkbox" name="check_private">
-                        <span>비공개</span>
-                    </div>
-                </div>
-                <div class="qna-write-btn">
-                    <button type="button" id="qna-write-cancle">취소하기</button>
-                    <button type="submit" id="qna-write-submit">등록하기</button>
-                </div>
-            </form>
+      
+        <div class="info-content-top">
+            <p><h3>[스토어 정보]</h3>
+            <div class ="info-content">
+               <p>상호명 : 주식회사 브랜디</p>
+ 			   <p>대표자 : team3 </p>
+               <p>사업자등록번호 : 220-88-93187</p>
+               <p>사업장소재지 : 비트캠프 서초캠퍼스</p>
+			</div>
         </div>
-    </div>
 
+        
+          <div class="info-content-top">
+            <p><h3>[스토어 고객센터]</h3>
+            <div class ="info-content">
+               <p>주중 10:00 AM ~ 10:00 PM, 주말 및 공휴일 휴무</p>
+ 			   <p>이메일 : bit@naver.com </p>
+			</div>
+        </div>
+          <div class="tab-info">
+            상품정보
+        </div>
+            <div class ="info-content">
+               <p>상품상세참조</p> 			
+			</div>			
+        </div>
     <!-- Q&A 테이블 -->
 
     <div class="qna-list-container">
+   <div class="tab-info">
+            문의글
+        </div>
         <table class="qun-list">
-            <colgroup>
-                <col style="width: 120px;">
-                <col style="width: 90px;">
-                <col>
-                <col style="width: 120px;">
-                <col style="width: 120px;">
-            </colgroup>
-            <thead>
-                <tr>
+              <thead>
+                <tr class = "qna-list-topBar"> 
                     <th><h3>분류</h3></th>
                     <th><h3>처리상태</h3></th>
-                    <th><h3>내용</h3></th>
+                    <th style ="text-align: center;"><h3>내용</h3></th>
                     <th><h3>작성자</h3></th>
                     <th><h3>작성일</h3></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody class = "qna-list">
+                <tr class = "qna-list-bottom">
                     <td><h3>상품문의</h3></td>
                     <td><h3>답변완료</h3></td>
                     <td class="qna-content">
-                        <div class="wrap">
-                            <i class="fas fa-lock"></i>
                             <h3>비밀글입니다.</h3>
-                        </div>
                     </td>
                     <td><h3>jjj***</h3></td>
                     <td><h3>2020.09.19</h3></td>
                 </tr>
 
-                <tr>
+               <tr class = "qna-list-bottom">
                     <td><h3>상품문의</h3></td>
                     <td><h3>답변완료</h3></td>
                     <td class="qna-content">
-                        <div class="wrap">
-                            <i class="fas fa-lock"></i>
                             <h3>비밀글입니다.</h3>
-                        </div>
                     </td>
                     <td><h3>jjj***</h3></td>
                     <td><h3>2020.09.19</h3></td>
                 </tr>
-
-                <tr>
+                <tr class = "qna-list-bottom">
                     <td><h3>상품문의</h3></td>
                     <td><h3>답변완료</h3></td>
                     <td class="qna-content">
-                        <div class="wrap">
-                            <i class="fas fa-lock"></i>
                             <h3>비밀글입니다.</h3>
-                        </div>
                     </td>
                     <td><h3>jjj***</h3></td>
                     <td><h3>2020.09.19</h3></td>
@@ -325,7 +325,8 @@
 
     
     <!-- qna paging -->
-    <div class="qna-page-container">
+     
+ <div class="qna-page-container">
         <a href="#"><</a>
         <a href="#">1</a>
         <a href="#">2</a>
@@ -334,7 +335,5 @@
         <a href="#">5</a>
         <a href="#">></a>
     </div>
-    
-</body>
 
-</html>
+</body>

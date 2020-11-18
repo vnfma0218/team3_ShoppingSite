@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <script>
+
 	var slideIndex = 1;
 	showSlides(slideIndex);
 	

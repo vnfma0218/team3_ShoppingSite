@@ -82,7 +82,9 @@
             </div>
         </div>
         <div class="purchaseBtn">
+        	<a href="">
             <button type="button" id="purchaseBtn" class="btn btn-dark btn-lg">구매하기</button>
+        	</a>
         </div>
        
     </div>

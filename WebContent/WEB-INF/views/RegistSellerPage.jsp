@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/RegistSellerPage.css">
+<link rel="stylesheet" href="/team3_ShoppingSite/css/RegistSellerPage.css">
 </head>
 <body>
 <div class="top_container">
